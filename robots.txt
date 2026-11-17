@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bc3.github.io/sir-claude-website/sitemap.xml
