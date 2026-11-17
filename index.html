@@ -1,114 +1,524 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Sir Claude — A Kingdom for Your Claude Code Projects</title>
-<meta name="description" content="Sir Claude is a local control room for every Claude Code project you're running, rendered as a living 3D medieval kingdom. No cloud, no signup — just npx sir-claude.">
-<link rel="canonical" href="https://bc3.github.io/sir-claude-website/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sir Claude — A Kingdom for Your Claude Code Projects">
-<meta property="og:description" content="A local control room for every Claude Code project you're running, rendered as a living 3D medieval kingdom.">
-<meta property="og:url" content="https://bc3.github.io/sir-claude-website/">
-<meta property="og:image" content="https://bc3.github.io/sir-claude-website/favicon.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sir Claude — A Kingdom for Your Claude Code Projects">
-<meta name="twitter:description" content="A local control room for every Claude Code project you're running, rendered as a living 3D medieval kingdom.">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#9c2c3e"/><path d="M14 46V26l6 5 6-9 6 9 6-9 6 9 6-5v20z" fill="#d4af6a"/><rect x="14" y="44" width="36" height="4" fill="#d4af6a"/></svg>
-      Sir Claude
-    </a>
-    <nav class="primary">
-      <ul>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="https://www.npmjs.com/package/sir-claude">npm</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<meta name="description" content="A local control room for Claude Code across all your projects, drawn as a medieval kingdom." />
+<link rel="canonical" href="https://bc3.github.io/sir-claude-website/" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sir Claude — A Kingdom for Your Claude Code Projects" />
+<meta property="og:description" content="A local control room for Claude Code across all your projects, drawn as a medieval kingdom." />
+<meta property="og:url" content="https://bc3.github.io/sir-claude-website/" />
+<meta property="og:image" content="https://bc3.github.io/sir-claude-website/img/sir-claude.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sir Claude — A Kingdom for Your Claude Code Projects" />
+<meta name="twitter:description" content="A local control room for Claude Code across all your projects, drawn as a medieval kingdom." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f3ead6;
+    --bg-alt: #ebe0c6;
+    --panel: #fbf6ea;
+    --ink: #2a2118;
+    --muted: #6b5d4a;
+    --gold: #9c6f1c;
+    --gold-bright: #c8962e;
+    --stone: #5a544a;
+    --edge: #d6c6a2;
+    --code-bg: #2a241c;
+    --code-ink: #f1e6c8;
+    --shadow: 0 10px 30px rgba(60, 40, 10, 0.18);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14120e;
+      --bg-alt: #1b1813;
+      --panel: #221e18;
+      --ink: #ece2c9;
+      --muted: #ab9f86;
+      --gold: #d9a94b;
+      --gold-bright: #f0c46a;
+      --stone: #8d8576;
+      --edge: #3a3228;
+      --code-bg: #0d0c0a;
+      --code-ink: #f1e6c8;
+      --shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14120e; --bg-alt: #1b1813; --panel: #221e18; --ink: #ece2c9; --muted: #ab9f86; --gold: #d9a94b;
+    --gold-bright: #f0c46a; --stone: #8d8576; --edge: #3a3228; --code-bg: #0d0c0a; --code-ink: #f1e6c8;
+    --shadow: 0 12px 34px rgba(0, 0, 0, 0.5); color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 19px/1.6 "EB Garamond", Georgia, serif; -webkit-font-smoothing: antialiased; }
+  img, video { max-width: 100%; height: auto; display: block; }
+  a { color: var(--gold); }
+  h1, h2, h3 { font-family: Cinzel, "Trajan Pro", Georgia, serif; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; margin: 0; }
+  code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.82em; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 
-<main>
-  <section class="hero">
+  /* top nav */
+  .topnav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--edge); }
+  .topnav .wrap { display: flex; align-items: center; gap: 18px; height: 52px; overflow-x: auto; scrollbar-width: none; }
+  .topnav .brand { font-family: Cinzel, serif; font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .topnav .links { display: flex; gap: 16px; margin-left: auto; }
+  .topnav .links a { color: var(--muted); text-decoration: none; font-size: 0.85em; white-space: nowrap; }
+  .topnav .links a:hover { color: var(--gold); }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; border-bottom: 3px double var(--gold); }
+  .hero::before { content: ""; position: absolute; inset: 0; background: url(screenshots/landscape-day.webp) center / cover no-repeat; opacity: 0.22; filter: saturate(0.9); }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, var(--bg)); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 72px; }
+  .eyebrow { font-family: Cinzel, serif; color: var(--gold); letter-spacing: 0.25em; font-size: 0.72em; text-transform: uppercase; margin: 0 0 12px; }
+  .hero h1 { font-size: clamp(2.3rem, 5.5vw, 4rem); }
+  .hero h1 span { display: block; font-size: 0.42em; color: var(--muted); letter-spacing: 0.12em; margin-top: 10px; }
+  .metaphor { font-size: 1.18em; margin: 22px 0 28px; max-width: 34em; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 6px; font-family: Cinzel, serif; font-weight: 700; font-size: 0.8em; letter-spacing: 0.08em; text-decoration: none; border: 1px solid var(--gold); color: var(--gold); background: var(--panel); }
+  .btn.primary { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: #1c1408; border-color: transparent; box-shadow: var(--shadow); }
+  .portrait { justify-self: center; position: relative; width: min(100%, 420px); }
+  .portrait img { border-radius: 200px 200px 14px 14px; border: 3px solid var(--gold); box-shadow: var(--shadow), 0 0 0 8px color-mix(in srgb, var(--gold) 18%, transparent); }
+  .portrait figcaption { text-align: center; font-family: Cinzel, serif; color: var(--muted); font-size: 0.75em; letter-spacing: 0.2em; margin-top: 14px; }
+
+  /* flyover */
+  .flyover { padding: 56px 0 8px; }
+  .flyover video, .flyover img { width: 100%; border-radius: 10px; border: 1px solid var(--edge); box-shadow: var(--shadow); }
+  .flyover p { color: var(--muted); text-align: center; font-style: italic; margin: 12px 0 0; }
+
+  /* intro strip */
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 48px 0 24px; }
+  .pillar { background: var(--panel); border: 1px solid var(--edge); border-top: 3px solid var(--gold); border-radius: 8px; padding: 18px 20px; }
+  .pillar h3 { font-size: 0.95em; color: var(--gold); margin-bottom: 6px; }
+  .pillar p { margin: 0; color: var(--muted); font-size: 0.95em; }
+
+  /* tour */
+  .tour-title { text-align: center; padding: 48px 0 8px; }
+  .tour-title h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); }
+  .rule { text-align: center; color: var(--gold); letter-spacing: 1em; margin: 10px 0 0; }
+  .group { padding: 56px 0; }
+  .group.alt { background: var(--bg-alt); border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); }
+  .ghead { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+  .sigil { flex: none; width: 54px; height: 54px; display: grid; place-items: center; font-size: 26px; color: var(--gold); border: 2px solid var(--gold); border-radius: 50% 50% 8px 8px; background: var(--panel); }
+  .ghead h2 { font-size: clamp(1.3rem, 2.6vw, 1.8rem); }
+  .lead { margin: 6px 0 0; color: var(--muted); font-size: 1.05em; }
+  .feats { columns: 2 320px; column-gap: 40px; padding: 0; margin: 0 0 28px; list-style: none; }
+  .feats li { break-inside: avoid; position: relative; padding-left: 22px; margin-bottom: 8px; }
+  .feats li::before { content: "✦"; position: absolute; left: 0; top: 0.05em; color: var(--gold); font-size: 0.8em; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+  .shots.one { grid-template-columns: minmax(0, 1fr); }
+  .shot { margin: 0; background: var(--panel); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .shot.big { grid-column: 1 / -1; }
+  .shot a { display: block; background: #0f0e0c; }
+  .shot img { width: 100%; transition: transform 0.4s ease; }
+  .shot a:hover img { transform: scale(1.012); }
+  .shot figcaption { padding: 12px 16px 14px; font-size: 0.92em; color: var(--muted); }
+  .shot figcaption strong { display: block; color: var(--ink); font-family: Cinzel, serif; font-size: 0.85em; letter-spacing: 0.04em; margin-bottom: 2px; }
+
+  /* how it works */
+  .how { padding: 64px 0; }
+  .how .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 40px; align-items: start; }
+  .how ol { padding-left: 1.2em; margin: 16px 0 0; }
+  .how ol li { margin-bottom: 10px; }
+  .how .diagram { background: #fff; border-radius: 10px; border: 1px solid var(--edge); padding: 10px; box-shadow: var(--shadow); }
+  .stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .how .full { grid-column: 1 / -1; }
+  .chip { background: var(--panel); border: 1px solid var(--edge); border-left: 3px solid var(--gold); border-radius: 6px; padding: 10px 14px; }
+  .chip b { font-family: Cinzel, serif; font-size: 0.8em; letter-spacing: 0.04em; display: block; }
+  .chip span { color: var(--muted); font-size: 0.9em; }
+
+  /* install */
+  .install { padding: 56px 0 72px; background: var(--bg-alt); border-top: 1px solid var(--edge); }
+  pre { background: var(--code-bg); color: var(--code-ink); padding: 18px 20px; border-radius: 8px; overflow-x: auto; line-height: 1.55; border: 1px solid var(--edge); }
+  pre .c { color: #a8987a; }
+  details.src { margin-top: 18px; color: var(--muted); }
+  details.src summary { cursor: pointer; font-size: 0.92em; margin-bottom: 10px; }
+  .note { color: var(--muted); font-size: 0.95em; }
+  footer { padding: 28px 0 40px; text-align: center; color: var(--muted); font-size: 0.88em; border-top: 3px double var(--gold); }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .how .grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .hero .wrap { padding-top: 40px; padding-bottom: 48px; }
+    .portrait { width: min(100%, 300px); order: -1; }
+    .shots { grid-template-columns: minmax(0, 1fr); }
+    body { font-size: 18px; }
+    .topnav .links { display: none; }
+  }
+</style>
+
+  <nav class="topnav" aria-label="Sections">
     <div class="wrap">
-      <h1>Sir Claude</h1>
-      <p class="tagline">A local control room for every Claude Code project you're running — rendered as your own living medieval kingdom.</p>
-      <div class="cta-row">
-        <span class="code-box">npx sir-claude <button id="copy-cmd" data-copy="npx sir-claude" aria-label="Copy command">copy</button></span>
-      </div>
-      <div class="cta-row">
-        <a class="btn primary" href="https://www.npmjs.com/package/sir-claude">View on npm</a>
-        <a class="btn secondary" href="https://www.instagram.com/sirclaude.dev/">Follow on Instagram</a>
-      </div>
-      <p class="hero-note">No signup. No cloud dependency. Everything runs on your machine.</p>
-      <p class="pullquote">"Sir Claude speaks the way he looks: deep, British, loyal — and just a little condescending about your code."</p>
+      <a class="brand" href="#top">♜ Sir Claude</a>
+      <div class="links"><a href="#kingdom">Kingdom &amp; world</a><a href="#projects">Projects &amp; Chat</a><a href="#automation">Automation</a><a href="#terminal">Terminal</a><a href="#quests">Quest Board</a><a href="#processes">Processes</a><a href="#insight">Insight</a><a href="#insights">Insights</a><a href="#voice">Voice &amp; Telegram</a><a href="#telegram">Telegram</a><a href="#proving-grounds">Proving Grounds</a><a href="#chronicle">The Chronicle</a><a href="#how">How it works</a><a href="#install">Run it</a><a href="#membership">Membership</a></div>
     </div>
-  </section>
+  </nav>
 
-  <section id="what-it-is">
+  <header class="hero" id="top">
     <div class="wrap">
-      <h2>One command, one kingdom</h2>
-      <p class="section-sub">Run <code>npx sir-claude</code> and every project folder you're working on becomes a building on a living 3D map, drawn in the style of Warcraft II. Size shows activity, color shows status, and a day/night cycle keeps time with the real world.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>The Kingdom</h3>
-          <p>Each project is a building on a 3D map. Watch your busiest codebases grow and your idle ones fall quiet.</p>
-        </div>
-        <div class="card">
-          <h3>Terminal &amp; Session History</h3>
-          <p>Open a terminal into any project and read back its Claude Code session history in plain language.</p>
-        </div>
-        <div class="card">
-          <h3>Spellbook</h3>
-          <p>Save the commands and scheduled jobs you run most, and fire them again with one click.</p>
-        </div>
-        <div class="card">
-          <h3>Conjure</h3>
-          <p>Describe what you want in plain language. Conjure turns it into the right command for the right project.</p>
-        </div>
-        <div class="card">
-          <h3>Offline Voice Control</h3>
-          <p>Fully offline voice control powered by whisper.cpp and Kokoro TTS. Nothing you say ever leaves your machine.</p>
-        </div>
-        <div class="card">
-          <h3>Telegram Remote Control</h3>
-          <p>Check in on your kingdom and nudge a project from your phone, wherever you are.</p>
+      <div>
+        <p class="eyebrow">Claude Dashboard</p>
+        <h1>Sir Claude<span>and the Kingdom of Many Repos</span></h1>
+        <p class="metaphor">A local control room for Claude Code across every project on your machine, drawn as a medieval kingdom. Your folders are towns and buildings, Claude sessions are knights at work, and Sir Claude, an AI knight with a voice, runs your commands, prompts, schedules and tests from one screen.</p>
+        <div class="cta">
+          <a class="btn primary" href="#kingdom">Take the tour</a>
+          <a class="btn" href="#install">Run it</a>
         </div>
       </div>
-      <p class="local-banner">Plus <strong>Proving Grounds</strong> — a built-in arena to pit LLMs against each other. <a href="features.html">See all features →</a></p>
+      <figure class="portrait">
+        <img src="img/sir-claude.webp" alt="Sir Claude, the AI knight, in blue and silver armour" width="1000" height="1000" />
+        <figcaption>AI Knight · Keeper of the Realm</figcaption>
+      </figure>
     </div>
-  </section>
+  </header>
 
-  <section id="membership" class="membership">
+  <main>
     <div class="wrap">
-      <h2>Become a member</h2>
-      <p>Sir Claude is closed source, but members get access to the code on GitHub. Reach out and we'll sort you out.</p>
-      <div class="contact-row">
-        <a class="btn secondary" href="https://www.instagram.com/sirclaude.dev/">DM on Instagram</a>
-        <a class="btn secondary" href="https://github.com/bc3">Find us on GitHub</a>
-        <a class="btn secondary" href="mailto:ben.croughs@telenet.be">Email us</a>
+      <div class="flyover">
+        <video autoplay muted loop playsinline preload="metadata" poster="screenshots/landscape-day.webp">
+          <source src="screenshots/flyover.webm" type="video/webm" />
+        </video>
+        <p>The camera sweeps down over the kingdom and its forests.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><h3>One screen</h3><p>Config, projects, sessions, commands, schedules, git and files, without switching to a terminal.</p></div>
+        <div class="pillar"><h3>Local only</h3><p>Runs on 127.0.0.1, reads Claude Code’s files, uses your own <code>claude</code> login. No accounts, no cloud.</p></div>
+        <div class="pillar"><h3>Fun on purpose</h3><p>A living map, a knight with opinions, wandering bards and witches, and a Halloween you did not ask for.</p></div>
       </div>
     </div>
-  </section>
-</main>
 
-<footer class="site">
-  <div class="wrap">
-    <span>&copy; 2026 Sir Claude</span>
-    <ul>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="https://www.npmjs.com/package/sir-claude">npm</a></li>
-      <li><a href="https://www.instagram.com/sirclaude.dev/">Instagram</a></li>
-      <li><a href="mailto:ben.croughs@telenet.be">Contact</a></li>
-    </ul>
-  </div>
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
+    <div class="tour-title wrap">
+      <p class="eyebrow">The feature tour</p>
+      <h2>A walk through the realm</h2>
+      <p class="rule">✦ ✦ ✦</p>
+    </div>
+
+    <section class="group" id="kingdom">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">♜</span>
+          <div>
+            <h2>Kingdom &amp; world</h2>
+            <p class="lead">The start page is a three.js god view in the spirit of Warcraft II. Your disk becomes a map you can read at a glance.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Each parent folder is a walled district, each project a building; size follows activity, colour follows status.</li><li>Live Claude sessions are knights at work, agents walk the streets as townsfolk, scheduled jobs are glowing hourglasses.</li><li>RTS controls: minimap, selection portrait, a 3×3 command grid with hotkeys, box-select, drag buildings to move them.</li><li>A landscape to the horizon: forest belt, rocks, rivers, beaches and open sea, with dawn, day, dusk, night and weather.</li><li>Themes: Classic, Halloween (dead groves, pumpkins, graves, ghosts), Winter and Christmas, or Auto, which picks by the date.</li><li>Many building kinds for projects (nine more were just added), shown again on the project page, and a map that adapts its quality so a full-screen kingdom stays smooth.</li><li>Buttons that move: hover and press animations across the commands, spells and panels.</li><li>Wandering folk (Gerald the Lost Bard, Old Mags the Swamp Witch, Brother Tobias) say something when clicked.</li><li>The Armoury browses the whole KayKit collection (4,000+ CC0 models) and shows what the kingdom uses.</li></ul>
+        <div class="shots">
+        <figure class="shot big">
+          <a href="screenshots/landscape-day.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/landscape-day.webp" type="image/webp" /><img src="screenshots/landscape-day.webp" alt="A landscape to the horizon" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>A landscape to the horizon</strong> Forest, rocks, rivers and open sea surround the kingdom, seeded from the world and fading into the sky.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/kingdom-night.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/kingdom-night.webp" type="image/webp" /><img src="screenshots/kingdom-night.webp" alt="The kingdom at night" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>The kingdom at night</strong> Pin the time of day and the weather from the HUD: lit windows, stars and a cold moon over the towns.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/kingdom-halloween.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/kingdom-halloween.webp" type="image/webp" /><img src="screenshots/kingdom-halloween.webp" alt="Halloween theme" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Halloween theme</strong> The Halloween theme turns the land dead and purple, with pumpkins, graves, ghosts, bats and mist round failing projects.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/kingdom-winter.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/kingdom-winter.webp" type="image/webp" /><img src="screenshots/kingdom-winter.webp" alt="Winter theme" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Winter theme</strong> The Winter theme lays snow on the roofs and freezes the land; Auto picks the season by the date.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/kingdom-christmas.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/kingdom-christmas.webp" type="image/webp" /><img src="screenshots/kingdom-christmas.webp" alt="Christmas theme" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Christmas theme</strong> Christmas adds wreaths, lanterns and a suspicious number of sleighs to the winter kingdom.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/folk-bubble.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/folk-bubble.webp" type="image/webp" /><img src="screenshots/folk-bubble.webp" alt="Wandering folk" width="1364" height="738" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Wandering folk</strong> Gerald the Bard, Old Mags and Brother Tobias wander in from the forest; click one and they have something to say.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/armoury.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/armoury.webp" type="image/webp" /><img src="screenshots/armoury.webp" alt="The Armoury" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>The Armoury</strong> Browse the whole KayKit collection in 3D thumbnails and see which models the kingdom already uses.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="group alt" id="projects">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">⚑</span>
+          <div>
+            <h2>Projects &amp; Chat</h2>
+            <p class="lead">Every folder that looks like a project gets its own page, found by scanning the parent folders you register.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Its commands as buttons with hotkeys, Ask Claude, open in the Claude app, a terminal right here, Finder, VS Code or WebStorm.</li><li>Chat tab: every Claude session of the folder, from the dashboard, the terminal, the desktop app or the IDE, reads like a chat.</li><li>Full history with tool calls as compact chips; continue any thread with one composer, model picker and auto-approve. The session bar shows the current context size.</li><li>CLI-only slash commands get a hint card, and any chat can continue in the real interactive Claude Code CLI with one click; when Claude refuses a folder outside the project, the chat points you to the CLI.</li><li>Choose the terminal for new shells and CLI sessions: the built-in one, Terminal, iTerm2 or Warp.</li><li>A project without a CLAUDE.md gets a Generate CLAUDE.md button; the project dropdown groups folders and sub-projects.</li><li>Links, setup, run history and statistics per project; the Ledger lists them all.</li></ul>
+        
+      </div>
+    </section>
+
+    <section class="group" id="automation">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">✶</span>
+          <div>
+            <h2>Automation: commands, spells, jobs, Conjure</h2>
+            <p class="lead">Everything you would type in a terminal can run from the dashboard, the map, a schedule or your phone.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Commands console: run named commands or any shell line in the project folder, output streams live, stop any time.</li><li>Spellbook: generic commands with {placeholders} you can cast in any project; each spell carries an artifact that rises over the building when cast.</li><li>Jobs: scheduled prompts or commands, once or on a cron, with history and an optional Telegram push.</li><li>Conjure with AI: describe a spell or a job in plain words; Claude drafts it into the regular form and warns when it looks destructive.</li><li>Permissions: one tree of tools Claude may use, globally and per project, with a tidy-up that promotes repeated rules.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/spellbook-conjure-crop.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/spellbook-conjure-crop.webp" type="image/webp" /><img src="screenshots/spellbook-conjure-crop.webp" alt="Conjure a spell with AI" width="1368" height="632" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Conjure a spell with AI</strong> The Spellbook with a conjured draft: Claude explains what it does and flags destructive commands before you save.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="group alt" id="terminal">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">❯</span>
+          <div>
+            <h2>Terminal</h2>
+            <p class="lead">A real shell for every project, with the kingdom looking over its shoulder.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>A real interactive shell (pty) per project: Tab completion, vim, ssh and your own zsh setup all work.</li><li>A banner follows the shell wherever it wanders, turns red outside the project, and has a home button and a one-click “project root”.</li><li>Spells sit in a row above the shell: pick one, fill its {placeholders} in a small form and it is typed into the shell for you.</li><li>Every command typed in a project or district shell is counted by a zsh hook; the most used rise to the top of the history, and you can drop entries you do not want.</li><li>Districts have a shell too, and a Claude CLI session, from the HUD or by voice.</li><li>Choose where new shells and CLI sessions open: the built-in terminal, Terminal, iTerm2 or Warp (Config page).</li><li>Shells are numbered (shell 1, shell 2…) and renamable, so you can tell them apart on the Processes page.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/terminal.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/terminal.webp" type="image/webp" /><img src="screenshots/terminal.webp" alt="Terminal" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Terminal</strong> A real shell per project with a banner that follows the folder, spells to cast, and a history of the commands you use most.</figcaption>
+        </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="group" id="quests">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">⚜</span>
+          <div>
+            <h2>The Quest Board</h2>
+            <p class="lead">Your open Jira tickets, as quests nailed to the castle gate.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Connect once on the Config page: Jira address, the email of your account and an API token. The login is kept in a private file and is never sent back to the browser.</li><li>Each quest shows its key (a link into Jira), summary, priority, status and the date it last changed, with an “Open in Jira” button.</li><li>Status badges show how many quests sit in each status and filter the board; pick several at once and clear with one click.</li><li>Project badges do the same per project, so a busy day can be cut down to one repository.</li><li>Make the query yours: another assignee than you, and a list of statuses to leave out (Done, Closed, Resolved and similar by default).</li><li>An empty board says so, in character: “No quests today, milord.”</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/quests.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/quests.webp" type="image/webp" /><img src="screenshots/quests.webp" alt="The Quest Board" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>The Quest Board</strong> Your open Jira tickets as quests, with status badges and per-project badges that show how many there are and filter the board.</figcaption>
+        </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="group alt" id="processes">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">⚙</span>
+          <div>
+            <h2>Processes</h2>
+            <p class="lead">Everything that runs or waits for you, in one list.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Every Claude chat that is working, waiting for your reply, or waiting with a question, plus every running shell, with a chat or terminal icon.</li><li>One row per conversation, even when it took several replies; click a row to jump straight to its window.</li><li>Each row shows what it is doing: the last command typed in a shell, or the last prompt of a chat.</li><li>Close a waiting chat to take it off the list; the conversation stays in the project’s Chat tab, and a new reply brings it back.</li><li>Stop a process and the row shows Stopping… until it is really gone. Filters for All, Chats, Shells and Waiting, each with a count.</li><li>The top-bar run menu uses the same icons and takes you to the same windows.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/processes.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/processes.webp" type="image/webp" /><img src="screenshots/processes.webp" alt="Processes" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Processes</strong> Every chat that works or waits for you and every running shell in one list: named shells with the last command typed in each, and a Close button on waiting chats.</figcaption>
+        </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="group" id="insight">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">◈</span>
+          <div>
+            <h2>Insight: Git, Files, usage, system</h2>
+            <p class="lead">The things you would otherwise open five tools for, side by side.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Git: every repository with its branch, ahead/behind and changes; stage, commit, pull, push, stash and diffs inline.</li><li>File Explorer: browse and preview any project, find a file by name (⌘P) or search inside files (⌘⇧F), copy relative paths.</li><li>Usage indicator: your 5-hour and weekly plan limits from the Claude Code status line, plus tokens per model and project.</li><li>System indicator: CPU and memory, and which dashboard processes use them.</li><li>Insights has a Today range and a day picker.</li><li>Line numbers in the file viewer and in every git diff.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/files-search-crop.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/files-search-crop.webp" type="image/webp" /><img src="screenshots/files-search-crop.webp" alt="Search in files" width="1080" height="952" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Search in files</strong> Search text or a regex across a whole project, filter by glob, and jump to the hit in the preview.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="group alt" id="insights">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">∿</span>
+          <div>
+            <h2>Insights</h2>
+            <p class="lead">Where the tokens, the hours and the money went.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Four tiles: cost, active time, sessions and prompts, with the cost per prompt.</li><li>Ranges from Today (with a day picker) to the whole history; switch the charts between cost and time.</li><li>A bar per day, the same data by project and by model, and the list of sessions behind any bar you click.</li><li>Filter everything to one project.</li><li>Cost is the API price of the tokens, not what your plan bills; active time leaves out pauses over five minutes.</li><li>Sessions whose transcripts Claude Code has deleted are still counted, from the dashboard’s own history.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/insights.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/insights.webp" type="image/webp" /><img src="screenshots/insights.webp" alt="Insights" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Insights</strong> Cost and active time per day, by project and by model, over the last 30 days.</figcaption>
+        </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="group" id="voice">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">♪</span>
+          <div>
+            <h2>Voice &amp; Telegram</h2>
+            <p class="lead">Sir Claude, the knight, talks back: deep, British, loyal and mildly condescending towards your code.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Click the mic and talk: “run lint on parking”, “ask Claude to add a badge”, “what failed?”. Hold V for push-to-talk.</li><li>Speech recognition runs locally (whisper.cpp on the Mac’s GPU, or Whisper base), the voice is Kokoro TTS, all offline.</li><li>He announces finished sessions and runs; his personality is a markdown file you can edit.</li><li>Telegram: the same commands, prompts and job results from your phone, one topic per project. A Telegram page keeps the full log of messages in and out, saved on disk.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/about.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/about.webp" type="image/webp" /><img src="screenshots/about.webp" alt="About Sir Claude" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>About Sir Claude</strong> The About dialog: Sir Claude’s portrait and a short chronicle that rolls like film credits.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="group alt" id="telegram">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">✈</span>
+          <div>
+            <h2>Telegram</h2>
+            <p class="lead">The kingdom in your pocket, one topic per project.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>One Telegram group with Topics: General, plus a topic per project. Write or speak; Sir Claude decides whether to run a command, send a request to Claude Code, or just answer.</li><li>Slash commands too: /projects, /run, /ask, and /voice on|off to get voice notes in a topic.</li><li>Pushes with a switch each: runs started from Telegram, scheduled jobs, finished Claude sessions, and Claude waiting for an answer. Failures and questions come with a voice note.</li><li>Only the people you allow can talk to it, paired during a short pairing window opened from the Config page.</li><li>The Telegram page keeps the whole log of messages in and out, saved on disk: filter by project and direction, load older days, or clear it.</li><li>Messages from strangers are logged as “ignored” without their content; the bot token is never written to the log.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/telegram.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/telegram.webp" type="image/webp" /><img src="screenshots/telegram.webp" alt="Telegram log" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Telegram log</strong> Every message that went through the Telegram channel, in and out, filterable by project and direction.</figcaption>
+        </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="group" id="proving-grounds">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">⚔</span>
+          <div>
+            <h2>Proving Grounds</h2>
+            <p class="lead">Pit LLMs against your own prompts and keep the score.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>A prompt library with variables, tags, a system prompt, text or image mode.</li><li>Testers: inputs plus checks (contains, regex, valid JSON, max cost or latency, an LLM judge with a rubric).</li><li>Run a tourney across Claude, GPT, Gemini, DeepSeek, Grok, Kimi and free models via OpenRouter; pass rate, cost and latency per model.</li><li>A champion is crowned, every run is kept in the history.</li></ul>
+        <div class="shots one">
+        <figure class="shot big">
+          <a href="screenshots/proving-grounds.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/proving-grounds.webp" type="image/webp" /><img src="screenshots/proving-grounds.webp" alt="Proving Grounds" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>Proving Grounds</strong> Saved prompts with testers and checks, run against many LLMs at once via OpenRouter, with a champion and history.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="group alt" id="chronicle">
+      <div class="wrap">
+        <header class="ghead">
+          <span class="sigil" aria-hidden="true">❦</span>
+          <div>
+            <h2>The Chronicle</h2>
+            <p class="lead">How the kingdom was built, told as an illuminated manuscript.</p>
+          </div>
+        </header>
+        <ul class="feats"><li>Twenty-five chapters, from the Founding to the Pigeon Archive, each opening with its own illustration.</li><li>Drop caps, royal decrees for commits, and the date of each chapter in the margin.</li><li>Chapter navigation, reading progress, a lightbox for the art, and Sir Claude can read each chapter aloud.</li></ul>
+        <div class="shots">
+        <figure class="shot big">
+          <a href="screenshots/chronicle.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/chronicle.webp" type="image/webp" /><img src="screenshots/chronicle.webp" alt="The Chronicle" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>The Chronicle</strong> The story of Sir Claude and the Kingdom of Many Repos in twenty-five chapters and twenty-five illustrations, as an illuminated manuscript.</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="screenshots/chronicle-chapter.webp" target="_blank" rel="noopener"><picture><source srcset="screenshots/chronicle-chapter.webp" type="image/webp" /><img src="screenshots/chronicle-chapter.webp" alt="A chapter of the Chronicle" width="1600" height="1000" loading="lazy" decoding="async" /></picture></a>
+          <figcaption><strong>A chapter of the Chronicle</strong> Chapter XXIV, The Roll Call: every chapter opens with its own illustration, then drop caps and the date in the margin.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="wrap grid">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2>A small server, a browser, and Claude Code</h2>
+          <ol>
+            <li>A Fastify server on <code>127.0.0.1</code> is the only part that touches the disk and starts processes; it checks Host and Origin on every request.</li>
+            <li>It scans the parent folders you register, reads Claude Code’s own files read-only for sessions, agents, skills and MCP servers, and keeps its own state in <code>~/.claude-dashboard/</code>.</li>
+            <li>Commands and Claude runs (<code>claude -p</code>, stream-json) run in a pty; their output streams to the browser over WebSockets.</li>
+            <li>The Angular UI draws the kingdom with three.js, and the panels, consoles and chat around it. Telegram, voice and the scheduler call the same functions as the UI.</li>
+          </ol>
+        </div>
+        <a class="diagram" href="architecture.png" target="_blank" rel="noopener"><img src="architecture.png" alt="Architecture: browser UI, Fastify server, Claude Code CLI, the file system, Telegram and the voice models" loading="lazy" width="2600" height="2431" /></a>
+        <div class="full">
+          <p class="eyebrow" style="margin-top:32px">Tech stack</p>
+          <div class="stack">
+            <div class="chip"><b>Angular 21</b><span>standalone components, signals, Angular Material</span></div>
+            <div class="chip"><b>three.js</b><span>the kingdom, KayKit CC0 models, bloom and fog</span></div>
+            <div class="chip"><b>Fastify</b><span>Node server on 127.0.0.1, WebSockets for live output</span></div>
+            <div class="chip"><b>node-pty + xterm.js</b><span>real terminals and streaming consoles</span></div>
+            <div class="chip"><b>Claude Code CLI</b><span><code>claude -p</code> with stream-json, your own login</span></div>
+            <div class="chip"><b>Kokoro TTS · whisper.cpp</b><span>offline voice in and out</span></div>
+            <div class="chip"><b>OpenRouter</b><span>the models in the Proving Grounds</span></div>
+            <div class="chip"><b>Telegram Bot API</b><span>the kingdom in your pocket</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="install" id="install">
+      <div class="wrap">
+        <p class="eyebrow">Run it</p>
+        <h2>Raise your own kingdom</h2>
+        <p>One command. Needs Node.js 22.12 or newer and the Claude Code CLI, logged in. macOS is the main target.</p>
+<pre><code>npx sir-claude                <span class="c"># http://localhost:4300, 127.0.0.1 only</span>
+npx sir-claude --port 4400    <span class="c"># another port</span></code></pre>
+        <p class="note">Open the UI, add a parent folder such as <code>~/Sources</code> on the Projects page, and every project up to two levels down appears on the map. The dashboard only reads Claude Code’s files; everything it writes lives in <code>~/.claude-dashboard/</code>. Package: <a href="https://www.npmjs.com/package/sir-claude">npmjs.com/package/sir-claude</a>.</p>
+        <details class="src">
+          <summary>Working on the dashboard itself? Run it from a clone</summary>
+<pre><code>npm install          <span class="c"># once; node-pty ships macOS prebuilds</span>
+npm run kit          <span class="c"># once; downloads the KayKit models (CC0) for the map</span>
+npm run dev          <span class="c"># server on http://127.0.0.1:4300, UI on http://localhost:4200</span>
+
+<span class="c"># optional</span>
+brew install whisper-cpp &amp;&amp; npm run voice-models   <span class="c"># the best speech recognition</span>
+npm run build &amp;&amp; npm start                          <span class="c"># one port: http://localhost:4300</span>
+npm run install-service                            <span class="c"># keep it running as a launchd service</span></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="install" id="membership" style="background:var(--bg); border-top:3px double var(--gold); border-bottom:none;">
+      <div class="wrap">
+        <p class="eyebrow">Join the round table</p>
+        <h2>Become a member</h2>
+        <p>Sir Claude is closed source, but members get access to the code on GitHub. Send a raven by whichever means you prefer.</p>
+        <div class="cta" style="margin-top:20px;">
+          <a class="btn primary" href="https://www.instagram.com/sirclaude.dev/">DM on Instagram</a>
+          <a class="btn" href="https://github.com/bc3">Find us on GitHub</a>
+          <a class="btn" href="mailto:ben.croughs@telenet.be">Send a letter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Built by Ben Croughs with Claude Code · Art: KayKit by Kay Lousberg (CC0) · Fonts: Cinzel &amp; EB Garamond</div>
+  </footer>
+
+</body></html>
