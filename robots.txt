@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow known AI crawlers used for assistant answers and training,
+# so Sir Claude stays findable and citable in AI chatbots.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://bc3.github.io/sir-claude-website/sitemap.xml

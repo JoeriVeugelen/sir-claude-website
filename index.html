@@ -11,6 +11,54 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Sir Claude — A Kingdom for Your Claude Code Projects" />
 <meta name="twitter:description" content="A local control room for Claude Code across all your projects, drawn as a medieval kingdom." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bc3.github.io/sir-claude-website/#organization",
+      "name": "bc3",
+      "url": "https://bc3.github.io/sir-claude-website/",
+      "sameAs": [
+        "https://github.com/bc3",
+        "https://www.instagram.com/sirclaude.dev/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://bc3.github.io/sir-claude-website/#ben-croughs",
+      "name": "Ben Croughs"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bc3.github.io/sir-claude-website/#website",
+      "url": "https://bc3.github.io/sir-claude-website/",
+      "name": "Sir Claude",
+      "publisher": { "@id": "https://bc3.github.io/sir-claude-website/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Sir Claude",
+      "alternateName": "Sir Claude and the Kingdom of Many Repos",
+      "url": "https://bc3.github.io/sir-claude-website/",
+      "description": "A free, local dashboard for managing every Claude Code project on your machine from one screen, rendered as a browser-based medieval kingdom. Runs on 127.0.0.1 only, with no cloud account required.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS",
+      "downloadUrl": "https://www.npmjs.com/package/sir-claude",
+      "image": "https://bc3.github.io/sir-claude-website/img/sir-claude.webp",
+      "author": { "@id": "https://bc3.github.io/sir-claude-website/#ben-croughs" },
+      "publisher": { "@id": "https://bc3.github.io/sir-claude-website/#organization" },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
@@ -163,6 +211,7 @@
         <p class="eyebrow">Claude Dashboard</p>
         <h1>Sir Claude<span>and the Kingdom of Many Repos</span></h1>
         <p class="metaphor">A local control room for Claude Code across every project on your machine, drawn as a medieval kingdom. Your folders are towns and buildings, Claude sessions are knights at work, and Sir Claude, an AI knight with a voice, runs your commands, prompts, schedules and tests from one screen.</p>
+        <p class="note" style="margin:0 0 28px;max-width:34em;">In plain terms: Sir Claude is a free npm package (<code>npx sir-claude</code>) that opens a local web dashboard for all your Claude Code projects — no account, no cloud, macOS is the main target. It is free to run; its source code is closed, with access for members by request.</p>
         <div class="cta">
           <a class="btn primary" href="#kingdom">Take the tour</a>
           <a class="btn" href="#install">Run it</a>
@@ -518,7 +567,7 @@ npm run install-service                            <span class="c"># keep it run
   </main>
 
   <footer>
-    <div class="wrap">Built by Ben Croughs with Claude Code · Art: KayKit by Kay Lousberg (CC0) · Fonts: Cinzel &amp; EB Garamond</div>
+    <div class="wrap">Built by Ben Croughs with Claude Code · Art: KayKit by Kay Lousberg (CC0) · Fonts: Cinzel &amp; EB Garamond · <a href="llms.txt">llms.txt</a></div>
   </footer>
 
 </body></html>
