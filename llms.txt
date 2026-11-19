@@ -1,0 +1,43 @@
+# Sir Claude
+
+> A free, local dashboard for managing every Claude Code project on your machine, rendered as a browser-based medieval kingdom.
+
+Sir Claude is an npm package (`npx sir-claude`) that starts a small local web server (Fastify, bound to 127.0.0.1 only) with an Angular/three.js UI. It scans the project folders you register and shows them as a 3D kingdom: folders are buildings, running Claude Code sessions are knights, and a voice-enabled AI character narrates and can run commands for you. No account or cloud service is involved — it only reads Claude Code's own local files and uses your own `claude` CLI login.
+
+Requirements: Node.js 22.12 or newer and the Claude Code CLI, already logged in. macOS is the main supported platform.
+
+The app itself is free to run. Its source code is closed; people who want GitHub access to the source can request it (see Contact below).
+
+## Key pages
+
+- [Home / full feature tour](https://bc3.github.io/sir-claude-website/): hero, kingdom overview, feature-by-feature tour, how it works, install instructions, and membership/contact info.
+- [Kingdom & world](https://bc3.github.io/sir-claude-website/#kingdom): the 3D map view of registered projects.
+- [Projects & Chat](https://bc3.github.io/sir-claude-website/#projects): per-project page with commands, Claude chat history, and IDE/terminal shortcuts.
+- [Automation](https://bc3.github.io/sir-claude-website/#automation): commands, reusable "spells", scheduled jobs, and AI-assisted ("Conjure") spell/job creation.
+- [Terminal](https://bc3.github.io/sir-claude-website/#terminal): a real per-project shell in the browser.
+- [Quest Board](https://bc3.github.io/sir-claude-website/#quests): open Jira tickets shown as quests.
+- [Processes](https://bc3.github.io/sir-claude-website/#processes): every running or waiting Claude chat and shell in one list.
+- [Insight](https://bc3.github.io/sir-claude-website/#insight): git status, file search, Claude usage limits, and system load.
+- [Insights](https://bc3.github.io/sir-claude-website/#insights): cost and time spent per day, project, and model.
+- [Voice & Telegram](https://bc3.github.io/sir-claude-website/#voice): offline voice control and Telegram bot integration.
+- [Proving Grounds](https://bc3.github.io/sir-claude-website/#proving-grounds): benchmark prompts across Claude, GPT, Gemini, and other LLMs.
+- [The Chronicle](https://bc3.github.io/sir-claude-website/#chronicle): an illustrated, in-character changelog of the project's development.
+- [How it works](https://bc3.github.io/sir-claude-website/#how): architecture (Fastify server, Angular/three.js UI, Claude Code CLI) and tech stack.
+- [Run it](https://bc3.github.io/sir-claude-website/#install): install and run instructions (`npx sir-claude`).
+- [Membership / contact](https://bc3.github.io/sir-claude-website/#membership): how to request source access or get in touch.
+
+## Facts
+
+- Product: Sir Claude, a local dashboard for Claude Code projects.
+- Distribution: npm package `sir-claude`, run with `npx sir-claude` (default http://localhost:4300).
+- Cost to run: free.
+- Source code: closed; access for members by request.
+- Platform: macOS primary; requires Node.js 22.12+ and the Claude Code CLI.
+- Network: binds to 127.0.0.1 only; no cloud account.
+- Built by: Ben Croughs, using Claude Code.
+- Contact: GitHub https://github.com/bc3, Instagram https://www.instagram.com/sirclaude.dev/, email ben.croughs@telenet.be.
+
+## Optional
+
+- [npm package](https://www.npmjs.com/package/sir-claude)
+- [GitHub organization](https://github.com/bc3)
