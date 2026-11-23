@@ -430,7 +430,7 @@ details.src pre { margin-top: 12px; }
   .js .incipit h1 .t, .js .incipit .sub { animation: inkin 1.2s ease-out both; }
   .js .incipit .sub { animation-delay: .5s; }
   .js .miniature .f-gold { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ink 2.2s ease-in-out .4s forwards; }
-  .js .miniature img { animation: wash 2.2s ease-out .9s both; }
+  .js .miniature img { animation: wash 2.4s ease-out .5s both; }
 
   .js [data-reveal="paint"]:not(.is-in) img { filter: grayscale(1) sepia(.55) contrast(1.15) brightness(1.06); }
   .js [data-reveal="paint"] img { transition: filter 1.6s ease-out .15s; }
@@ -476,7 +476,7 @@ details.src pre { margin-top: 12px; }
 @keyframes sheen { from { transform: translateX(-130%); } to { transform: translateX(130%); } }
 @keyframes gild { from { opacity: 0; } to { opacity: 1; } }
 @keyframes inkin { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: blur(0); } }
-@keyframes wash { from { filter: grayscale(1) sepia(.6) contrast(1.2); opacity: .2; } 40% { opacity: 1; } to { filter: none; opacity: 1; } }
+@keyframes wash { from { filter: grayscale(1) sepia(.6) contrast(1.15); } to { filter: none; } }
 @keyframes rise { from { transform: translateY(6px) scale(.6); } to { transform: none; } }
 @keyframes swing { 0% { transform: rotate(0); } 20% { transform: rotate(7deg); } 45% { transform: rotate(-4.5deg); } 70% { transform: rotate(2deg); } 100% { transform: rotate(0); } }
 @keyframes press { 0% { transform: scale(1); } 35% { transform: scale(.93, .9); } 100% { transform: scale(1); } }
