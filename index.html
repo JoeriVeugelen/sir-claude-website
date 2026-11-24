@@ -470,10 +470,14 @@ html.js:not(.late) .blue-ribbon { background-color: #234a8c; }
 .fronti { position: relative; max-width: clamp(1000px, calc((100svh - 220px) * 1.78), 1440px); margin: 0 auto; }
 .fronti-art { display: block; }
 .fronti-art img, .fronti-loop { display: block; width: 100%; height: auto; mix-blend-mode: multiply;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 99%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 99%); mask-composite: intersect; }
+  /* All four edges feather to transparent, on the still and the video alike, so no edge of the rectangle can show.
+     The mask sits on each element, not on .fronti-media: a mask on the wrapper would isolate it and stop the multiply. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 9%, #000 82%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 9%, #000 82%, transparent 100%); mask-composite: intersect; }
 .fronti-media { position: relative; }
 /* Video frame 0 is the poster pixel for pixel, so the swap is instant: a cross-fade of two multiplied layers would darken mid-way. */
-.fronti-loop { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: 100% 50%; opacity: 0; pointer-events: none; }
+/* The box is 3px shorter than the still (those rows are fully masked anyway), so the video never counts as a larger LCP element. */
+.fronti-loopbox { position: absolute; left: 0; right: 0; top: 0; height: calc(100% - 3px); overflow: hidden; pointer-events: none; }
+.fronti-loop { position: absolute; left: 0; top: 0; height: calc(100% + 3px); object-fit: cover; object-position: 100% 50%; opacity: 0; pointer-events: none; }
 .fronti-media.on .fronti-loop { opacity: 1; }
 .fronti-media.on .fronti-art img { opacity: 0; }
 .fronti-title { position: absolute; left: 6%; top: 3.5%; max-width: 54%; }
@@ -539,7 +543,7 @@ html.js:not(.late) .blue-ribbon { background-color: #234a8c; }
   .fronti-title h1 { font-size: clamp(2.8rem, 15vw, 4.6rem); justify-content: center; }
   .fronti-title .sub { font-size: 1.32rem; margin-top: 6px; }
   .fronti-media { margin-top: -6px; }
-  .fronti-art img, .fronti-loop { max-height: none; min-height: 0; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 80%, transparent 100%); }
+  .fronti-art img, .fronti-loop { max-height: none; min-height: 0; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 80%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 80%, transparent 100%); mask-composite: intersect; }
   .plinth { margin-top: -40px; padding: 18px 20px 0; }
   .plinth .metaphor { font-size: 1.3rem; }
   .plinth .cta .btn { flex: 1 1 auto; text-align: center; }
@@ -678,7 +682,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <source type="image/avif" srcset="img/art/frontispiece-960.avif 960w, img/art/frontispiece.avif 1280w" sizes="min(100vw, 1440px)">
       <img src="img/art/frontispiece.webp" srcset="img/art/frontispiece-960.webp 960w, img/art/frontispiece.webp 1280w" sizes="min(100vw, 1440px)" alt="Sir Claude in silver armour and a blue surcoat with a gold crown stands on a ridge beside his crowned red banner, looking over a valley of walled towns, a river and a castle on the far hill" width="1280" height="720" fetchpriority="high" decoding="sync">
     </picture>
-    <video class="fronti-loop" data-src="img/art/frontispiece-loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
+    <div class="fronti-loopbox"><video class="fronti-loop" data-src="img/art/frontispiece-loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="720"></video></div>
     </div>
     <div class="fronti-title">
       <h1 id="title"><span class="initial" aria-hidden="true"><svg viewBox="0 0 100 100"><g class="gild-wrap"><rect class="gild" x="1" y="1" width="98" height="98"/><rect x="9" y="9" width="82" height="82" fill="#f3ead4" stroke="#2a2017" stroke-width="1.2"/><path d="M9 9h82v82H9z" fill="none" stroke="#a3241c" stroke-width="3" transform="translate(5 5) scale(.9)" opacity=".9"/><path d="M18 80c10-4 12-14 22-14M82 20c-10 4-12 14-22 14M18 20c5 6 4 12 10 14M82 80c-5-6-4-12-10-14" fill="none" stroke="#2e6844" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="80" r="3.4" fill="#a3241c"/><circle cx="82" cy="20" r="3.4" fill="#a3241c"/><circle cx="18" cy="20" r="3" fill="#234a8c"/><circle cx="82" cy="80" r="3" fill="#234a8c"/><rect x="1" y="1" width="98" height="98" fill="none" stroke="#2a2017" stroke-width="1.6"/></g></svg></span><span class="t"><span class="cap">S</span>ir Claude</span></h1>
@@ -1155,7 +1159,7 @@ npm run install-service                            <span class="c"># keep it run
     var play = function () { var pr = fv.play(); if (pr && pr.catch) pr.catch(function () {}); };
     var start = function () {
       if (started) return; started = true;
-      fv.addEventListener('playing', function () { requestAnimationFrame(function () { fv.parentNode.classList.add('on'); }); }, { once: true });
+      fv.addEventListener('playing', function () { requestAnimationFrame(function () { fv.closest('.fronti-media').classList.add('on'); }); }, { once: true });
       fv.addEventListener('canplay', function () { if (heroIn) play(); }, { once: true });
       fv.preload = 'auto'; fv.src = fv.getAttribute('data-src');
     };
