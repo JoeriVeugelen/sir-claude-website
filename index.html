@@ -74,7 +74,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
-<link rel="preload" as="image" imagesrcset="img/art/hero-knight-420.avif 420w, img/art/hero-knight.avif 640w" imagesizes="(max-width: 900px) 230px, 340px" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width: 700px)" imagesrcset="img/art/frontispiece-m-480.avif 480w, img/art/frontispiece-m.avif 766w" imagesizes="100vw" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 701px)" imagesrcset="img/art/frontispiece-960.avif 960w, img/art/frontispiece.avif 1276w" imagesizes="min(100vw, 1440px)" type="image/avif" fetchpriority="high">
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#efe5cd">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -154,21 +155,14 @@ code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fo
 
 /* ---------- opening folio (hero) ---------- */
 .opening { position: relative; overflow: hidden; }
-.opening .wrap { position: relative; display: grid; grid-template-columns: 74px minmax(0, 1.2fr) minmax(0, .9fr); gap: 0 44px; padding-top: 64px; padding-bottom: 84px; }
-.vine { grid-row: 1 / span 2; width: 74px; height: 100%; min-height: 560px; overflow: visible; }
-.v-stem, .v-tendril { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
-.v-tendril { stroke-width: 1.4; }
-.v-leaf path { fill: var(--gold); stroke: var(--ink); stroke-width: 1; }
-.v-berry circle { stroke: var(--ink); stroke-width: 1; }
-.b-red { fill: var(--red); } .b-blue { fill: var(--blue); }
-.incipit h1 { position: relative; font: 400 clamp(3.4rem, 8vw, 7.4rem)/.92 "UnifrakturMaguntia", serif; letter-spacing: -.005em; display: flex; align-items: flex-start; gap: .08em; margin-left: -.02em; }
-.incipit h1 .t { position: relative; padding-top: .08em; }
-.incipit h1 .cap { position: absolute; left: -1.151em; top: 0; width: 1.113em; height: 1.113em; display: grid; place-items: center; padding-bottom: .08em; line-height: 1; color: #234a8c; }
+.fronti-title h1 { position: relative; font: 400 clamp(3.4rem, 8vw, 7.4rem)/.92 "UnifrakturMaguntia", serif; letter-spacing: -.005em; display: flex; align-items: flex-start; gap: .08em; margin-left: -.02em; }
+.fronti-title h1 .t { position: relative; padding-top: .08em; }
+.fronti-title h1 .cap { position: absolute; left: -1.151em; top: 0; width: 1.113em; height: 1.113em; display: grid; place-items: center; padding-bottom: .08em; line-height: 1; color: #234a8c; }
 .initial { position: relative; flex: none; display: block; width: 1.06em; height: 1.06em; margin-right: -.04em; font-size: 1.05em; line-height: 1; overflow: hidden; }
 .initial svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .gild { fill: url(#gold-leaf); }
 .initial::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255,250,225,.75) 46%, transparent 62%); transform: translateX(-130%); pointer-events: none; }
-.incipit .sub { display: block; font: italic 400 clamp(1.35rem, 2.5vw, 2rem)/1.2 "EB Garamond", serif; color: var(--red); margin: 18px 0 0 .1em; }
+.fronti-title .sub { display: block; font: italic 400 clamp(1.35rem, 2.5vw, 2rem)/1.2 "EB Garamond", serif; color: var(--red); margin: 18px 0 0 .1em; }
 .metaphor { font-size: clamp(1.5rem, 2.2vw, 1.95rem); line-height: 1.35; margin: 30px 0 20px; max-width: 22em; }
 .plain { color: var(--ink-soft); font-size: .86rem; line-height: 1.55; max-width: 34em; margin: 0 0 34px; }
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
@@ -182,25 +176,6 @@ code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fo
 .btn.red:hover::before { background-color: var(--ink); border-color: var(--ink); }
 .cmd { display: inline-flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--ink-soft); }
 .cmd code { font-size: .95rem; color: var(--ink); }
-.miniature { grid-column: 3; grid-row: 1 / span 2; align-self: center; margin: 0; justify-self: end; width: min(100%, 430px); }
-.arch { position: relative; aspect-ratio: 5 / 6; }
-.arch picture { position: absolute; left: 10.4%; top: 7.333%; width: 79.2%; height: 87.333%; clip-path: url(#arch-clip); overflow: hidden; }
-.arch img { transform: translateY(calc(var(--hp, 0) * 18px)) scale(1.05); will-change: transform; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
-.arch .frame { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.h-gold { fill: #c79a3e; }
-.h-pounce { fill: none; stroke: #7d561a; stroke-width: 1.1; stroke-linecap: round; stroke-dasharray: 0 5; opacity: .75; }
-.h-burnish { fill: #fbeab0; opacity: 0; mix-blend-mode: soft-light; }
-.h-lapis { fill: #234a8c; }
-.h-pen path { fill: none; stroke: #f3ead4; stroke-width: .7; stroke-linecap: round; }
-.h-gdot circle { fill: #e2c27a; stroke: #5b3f12; stroke-width: .3; }
-.h-red { fill: none; stroke: #a3241c; stroke-width: 1.7; }
-.h-rule path { fill: none; stroke: #2a2017; stroke-width: .75; stroke-linejoin: miter; }
-.h-ivy path { fill: none; stroke: #2a2017; stroke-width: .7; stroke-linecap: round; }
-.h-ivy .h-leaf { stroke: #2a2017; stroke-width: .35; fill: #c79a3e; }
-.h-ivy .h-leaf.b { fill: #234a8c; }
-.h-ivy .h-leaf.r { fill: #a3241c; }
-.h-berry { fill: #c79a3e; stroke: #2a2017; stroke-width: .3; }
-.miniature figcaption { text-align: center; font-style: italic; color: var(--ink-soft); margin-top: 14px; font-size: 1.02rem; }
 
 /* ---------- flyover + three virtues ---------- */
 .flyover { margin: 0 auto; }
@@ -279,7 +254,7 @@ code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fo
 .fhead { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 4px 20px; align-items: start; margin-bottom: 26px; }
 .shield { filter: url(#worn-edge); width: 58px; height: 70px; grid-row: 1 / span 2; margin-top: 2px; overflow: visible; }
 .shield .field { stroke: var(--ink); stroke-width: 1.6; }
-.shield .charge { stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
+.shield .charge:not(.line) { stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
 .shield .line { fill: none; stroke-width: 2.2; stroke-linecap: round; }
 .fhead .lead { grid-column: 2; margin: 6px 0 0; font-size: 1.22rem; font-style: italic; color: var(--ink-soft); max-width: 34em; }
 .feats { list-style: none; margin: 0; padding: 0; }
@@ -346,9 +321,6 @@ pre .c { color: var(--code-dim); }
 details.src { margin-top: 22px; }
 details.src summary { cursor: pointer; font-style: italic; color: #574634; }
 details.src pre { margin-top: 12px; }
-.pendant { position: absolute; left: 50%; bottom: -150px; width: 132px; margin-left: -66px; pointer-events: none; }
-.seal-img { display: block; width: 100%; height: auto; }
-.seal-swing { display: block; transform-origin: 50% 0; }
 
 /* membership */
 .member { padding: 170px 0 96px; text-align: left; }
@@ -371,10 +343,6 @@ details.src pre { margin-top: 12px; }
   body { font-size: 18px; }
   .wrap { padding: 0 20px; }
   .runhead nav > a { display: none; }
-  .opening .wrap { grid-template-columns: minmax(0, 1fr); padding-top: 30px; padding-bottom: 56px; }
-  .vine { display: none; }
-  .miniature { grid-column: 1; grid-row: 1; justify-self: center; width: min(100%, 290px); margin-bottom: 30px; }
-  .incipit { grid-column: 1; }
   .metaphor { font-size: 1.14rem; }
   .virtues { grid-template-columns: minmax(0, 1fr); margin-top: 44px; }
   .virtues > div + div { border-left: 0; border-top: 1px solid var(--line); }
@@ -469,21 +437,12 @@ kbd { font: .8em ui-monospace, Menlo, monospace; padding: 0 .25em; border-bottom
 .book { margin-top: 10px; perspective: 2600px; }
 .codex { position: relative; max-width: 1100px; margin: 0 auto; }
 .codex-img { width: 100%; height: auto; filter: drop-shadow(0 18px 22px rgba(42,26,12,.35)); }
-.pg { position: absolute; top: 6.07%; height: 69.4%; display: grid; place-items: center; padding: 3%; }
-.pg-l { left: 11.14%; width: 34.4%; }
-.pg-r { left: 50.17%; width: 33.83%; }
-.pg img { width: 100%; box-shadow: 0 0 0 1px rgba(42,32,23,.55), 0 6px 14px -8px rgba(42,32,23,.6); }
-.pg-l .no-leaf { display: none; }
-.pg-orn { width: 34%; aspect-ratio: 1; opacity: .4; background: radial-gradient(circle, #a3241c 0 7%, transparent 8%), conic-gradient(from 45deg, transparent 0 20%, transparent 0); }
 .leaf { position: absolute; top: 6.07%; height: 69.4%; left: 47.85%; width: 36.14%; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(-180deg); z-index: 4; }
 .leaf-face { position: absolute; inset: 0 0 0 6.4%; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: #efe2c4 url(img/art/parchment.webp) center / cover; }
 .leaf-front { -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%); display: grid; place-content: center; gap: 12px; padding: 8%; text-align: center; color: #2a2017; }
 .leaf-front .lf-title { font: 400 clamp(1.8rem, 4vw, 3.6rem)/1 "UnifrakturMaguntia", serif; color: #a3241c; }
 .leaf-front .lf-sub { font-style: italic; font-size: clamp(.8rem, 1.3vw, 1.05rem); color: #574634; }
 .leaf-back { transform: rotateY(180deg); inset: 0 6.4% 0 0; background: none; display: grid; place-items: center; padding: 3%; }
-.leaf-back img { width: 100%; box-shadow: 0 0 0 1px rgba(42,32,23,.55); }
-.book-caps { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 840px; margin: 6px auto 0; padding: 0; }
-.book .cap { margin: 0; text-align: center; font-size: .76rem; font-variant: small-caps; letter-spacing: .06em; font-style: normal; color: var(--ink-soft); }
 
 @media (max-width: 900px) {
   body { font-size: 19px; }
@@ -499,49 +458,109 @@ kbd { font: .8em ui-monospace, Menlo, monospace; padding: 0 .25em; border-bottom
   .member { padding-top: 150px; }
   .charter .art.headpiece { width: calc(100% + 24px); margin: -18px -12px 6px; }
   .charter pre { font-size: .9rem; }
-  .book-caps { gap: 12px; }
 }
 
 html.js:not(.late) { --late-off: none; }
 html.js:not(.late) .ribbon { background-color: #a3241c; }
 html.js:not(.late) .blue-ribbon { background-color: #234a8c; }
 
+
+/* ---------- v4: the frontispiece (hero) ---------- */
+.opening { position: relative; padding-bottom: 40px; }
+.fronti { position: relative; max-width: clamp(1000px, calc((100svh - 220px) * 1.78), 1440px); margin: 0 auto; }
+.fronti-art { display: block; }
+.fronti-art img { display: block; width: 100%; height: auto; mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 99%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, #000 80%, transparent 99%); mask-composite: intersect; }
+.fronti-title { position: absolute; left: 6%; top: 3.5%; max-width: 54%; }
+.fronti-title h1 { font-size: clamp(4.4rem, 8.6vw, 9rem); line-height: .86; color: #2a2017; }
+.fronti-title .sub { font-size: clamp(1.5rem, 2.6vw, 2.5rem); margin-top: 12px; }
+.plinth { position: relative; z-index: 2; max-width: 980px; margin: -64px auto 0; padding: 0 40px 4px; text-align: center; }
+.plinth-orn { display: block; width: 150px; margin: 0 auto 8px; }
+.plinth .metaphor { font-size: clamp(1.45rem, 2.3vw, 2.1rem); line-height: 1.3; margin: 0 auto 26px; max-width: 30em; }
+.plinth .cta { justify-content: center; }
+.plinth .plain { margin: 24px auto 0; max-width: 46em; font-size: .9rem; }
+
+/* ---------- v4: Voice, the About dialog redrawn ---------- */
+.showcase { margin: 64px auto 0; max-width: 1000px; }
+.sc-card { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); background: #f4ead2; color: #2a2017; border: 18px solid transparent; border-image: var(--late-off, url(img/ui/frame-illum.webp) 52 / 18px stretch); box-shadow: 0 24px 40px -26px rgba(42,26,12,.7); }
+.sc-left { padding: 34px 26px 28px; text-align: center; border-right: 1px solid rgba(42,32,23,.35); box-shadow: 1px 0 0 rgba(163,36,28,.35); }
+.sc-arch { position: relative; width: min(100%, 240px); aspect-ratio: 5 / 6.4; margin: 0 auto; padding: 7px; background: linear-gradient(135deg, #8a5d17, #e9c46c 30%, #b38229 55%, #f1d58b 75%, #9a6a1d); clip-path: url(#arch-clip); }
+.sc-arch picture, .sc-arch img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; clip-path: url(#arch-clip); }
+.sc-name { font: 400 2.1rem/1 "UnifrakturMaguntia", serif; margin: 18px 0 6px; color: #2a2017; }
+.sc-title { margin: 0; font-size: .82rem; font-variant: small-caps; letter-spacing: .08em; color: #574634; }
+.sc-right { padding: 40px 44px 34px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.sc-tower { width: 40px; height: 40px; }
+.sc-pre { margin: 10px 0 0; font-size: .8rem; font-variant: small-caps; letter-spacing: .14em; color: #a3241c; }
+.sc-h { margin: 4px 0 8px; font: 400 clamp(2rem, 3.6vw, 3rem)/1.05 "UnifrakturMaguntia", serif; color: #2a2017; }
+.sc-sub { margin: 0 0 18px; font-style: italic; font-size: .95rem; color: #574634; }
+.sc-btn { display: inline-block; padding: 8px 18px 9px; border: 1.4px solid #a3241c; color: #a3241c; font-variant: small-caps; letter-spacing: .06em; font-size: .95rem; }
+.sc-tale { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid rgba(42,32,23,.3); text-align: left; font-size: 1.02rem; line-height: 1.55; }
+.sc-tale::first-letter { float: left; font: 400 3.4em/.8 "UnifrakturMaguntia", serif; color: #a3241c; padding: .06em .08em 0 0; }
+.showcase figcaption { text-align: center; margin-top: 14px; font-style: italic; color: var(--ink-soft); font-size: .95rem; }
+
+/* ---------- v4: the codex, laid out like real folios ---------- */
+.codex { --u: min(11px, calc((100vw - 56px) / 100)); }
+.pg { position: absolute; top: 6.07%; height: 69.4%; }
+.pg-r { left: 50.17%; width: 33.83%; }
+.leaf-back { transform: rotateY(180deg); inset: 0 6.4% 0 0; background: none; }
+.page { position: absolute; top: 7%; bottom: 8%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #2a2017; }
+.pg-r .page { left: 11.3%; right: 8.9%; }
+.leaf-back .page { left: 2.9%; right: 17.3%; }
+.rh { align-self: stretch; display: flex; justify-content: space-between; margin: 0 0 calc(var(--u) * 3.2); padding-bottom: calc(var(--u) * .5); border-bottom: 1px solid rgba(163,36,28,.55); font-size: clamp(6px, calc(var(--u) * 1.05), 12px); font-variant: small-caps; letter-spacing: .1em; color: #a3241c; line-height: 1.2; }
+.rh span + span { font-style: italic; font-variant: normal; letter-spacing: .02em; color: #574634; }
+.fplate { position: relative; display: block; width: 100%; padding: calc(var(--u) * .32); background: linear-gradient(135deg, #8a5d17, #e9c46c 30%, #b38229 55%, #f1d58b 75%, #9a6a1d); border: 1px solid #2a2017; outline: 1px solid rgba(163,36,28,.75); outline-offset: calc(var(--u) * .36); }
+.fplate img { display: block; width: 100%; height: auto; outline: 1px solid #2a2017; filter: sepia(.12) saturate(.92); }
+.fplate::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.pg-r .fplate { transform: perspective(calc(var(--u) * 70)) rotateY(-5deg); transform-origin: 100% 50%; }
+.pg-r .fplate::after { background: linear-gradient(to right, rgba(42,26,12,.55), rgba(42,26,12,.18) 10%, transparent 22%, transparent 88%, rgba(255,248,230,.08)); }
+.leaf-back .fplate { transform: perspective(calc(var(--u) * 70)) rotateY(5deg); transform-origin: 0 50%; }
+.leaf-back .fplate::after { background: linear-gradient(to left, rgba(42,26,12,.55), rgba(42,26,12,.18) 10%, transparent 22%, transparent 88%, rgba(255,248,230,.08)); }
+.fcap { margin: calc(var(--u) * 2.6) 0 0; font: 400 clamp(9px, calc(var(--u) * 1.9), 21px)/1.1 "UnifrakturMaguntia", serif; color: #a3241c; }
+.fnote { margin: calc(var(--u) * .7) 0 0; font-style: italic; font-size: clamp(6px, calc(var(--u) * 1.12), 13px); line-height: 1.3; color: #574634; }
+.fleur { width: calc(var(--u) * 6); margin-top: calc(var(--u) * 1.1); }
+
+/* ---------- v4: the seal hangs from cords tucked under the charter ---------- */
+.charter-wrap { position: relative; max-width: 940px; margin: 0 auto; }
+.charter-wrap .charter { position: relative; z-index: 1; }
+.install { padding-bottom: 190px; }
+.pendant { position: absolute; z-index: 0; left: 50%; top: calc(100% - 24px); width: 128px; margin-left: -64px; pointer-events: none; }
+.seal-img { display: block; width: 100%; height: auto; filter: drop-shadow(0 4px 3px rgba(42,26,12,.45)); transform-origin: 50% 72%; }
+
+@media (max-width: 700px) {
+  .opening { padding-bottom: 26px; }
+  .fronti { display: flex; flex-direction: column; max-width: none; }
+  .fronti-title { position: relative; order: -1; left: auto; top: auto; max-width: none; padding: 22px 20px 0; text-align: center; z-index: 1; }
+  .fronti-title h1 { font-size: clamp(2.8rem, 15vw, 4.6rem); justify-content: center; }
+  .fronti-title .sub { font-size: 1.32rem; margin-top: 6px; }
+  .fronti-art { margin-top: -34px; }
+  .fronti-art img { max-height: none; min-height: 0; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); }
+  .plinth { margin-top: -40px; padding: 18px 20px 0; }
+  .plinth .metaphor { font-size: 1.3rem; }
+  .plinth .cta .btn { flex: 1 1 auto; text-align: center; }
+  .sc-card { grid-template-columns: minmax(0, 1fr); border-width: 12px; border-image-width: 12px; }
+  .sc-left { border-right: 0; box-shadow: none; border-bottom: 1px solid rgba(42,32,23,.35); padding: 26px 18px 20px; }
+  .sc-arch { width: 62%; }
+  .sc-right { padding: 26px 20px 24px; }
+  .install { padding-bottom: 170px; }
+  .pendant { width: 108px; margin-left: -54px; top: calc(100% - 20px); }
+}
+@media (max-width: 900px) {
+  .book { margin-left: -20px; margin-right: -20px; }
+  .codex { width: 118vw; margin-left: calc(50% - 59vw); --u: 1.18vw; }
+}
+
 /* ---------- motion (only when the reader has not asked for less) ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .js .v-stem { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ink 2.6s cubic-bezier(.45,.1,.3,1) .2s forwards; }
-  .js .v-tendril { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ink .9s ease-out var(--d) forwards; }
-  .js .v-leaf path, .js .v-berry circle { transform: scale(0); transform-box: fill-box; transform-origin: 50% 100%; animation: bud .6s cubic-bezier(.3,1.6,.5,1) calc(var(--d) + .25s) forwards; }
-  .js .v-berry circle { transform-origin: 50% 50%; }
   .js .initial::after { animation: sheen 1.6s ease-in-out 1.1s 1 forwards; }
   .js .initial .gild-wrap { animation: gild 1.2s ease-out .35s both; }
-  .js .incipit h1 .t, .js .incipit .sub { animation: inkin 1.2s ease-out both; }
-  .js .incipit .sub { animation-delay: .5s; }
+  .js .fronti-title h1 .t, .js .fronti-title .sub { animation: inkin 1.2s ease-out both; }
+  .js .fronti-title .sub { animation-delay: .5s; }
   /* major headings are penned in quickly, once */
   .js .ink-h { -webkit-mask-image: url(img/ui/pen.webp); mask-image: url(img/ui/pen.webp); -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: 0 0; mask-position: 0 0; transition: -webkit-mask-position .85s cubic-bezier(.5,.1,.3,1), mask-position .85s cubic-bezier(.5,.1,.3,1); }
   .js .ink-h:not(.is-in) { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
-  .js .art:not(.is-in) img { opacity: 0; transform: translateY(14px); }
-  .js .art img { transition: opacity 1.1s ease-out, transform 1.4s cubic-bezier(.2,.7,.2,1); }
-  /* hero miniature: the illuminator rules the frame in ink, lays the gold, paints the lapis and penwork,
-     burnishes the gold once, and the ivy grows up the margins. Then it stays still. */
-  .js .h-rule path, .js .h-red, .js .h-pen path, .js .h-ivy path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-  .js .h-rule path { animation: ink 1.1s cubic-bezier(.5,.05,.3,1) .15s forwards; }
-  .js .h-rule path:nth-child(2) { animation-delay: .35s; }
-  .js .h-rule path:nth-child(3) { animation-delay: .55s; }
-  .js .h-red { animation: ink 1.2s cubic-bezier(.5,.05,.3,1) .7s forwards; }
-  .js .h-gold, .js .h-pounce { opacity: 0; animation: lay .7s ease-out 1.05s forwards; }
-  .js .h-pounce { animation-delay: 1.5s; }
-  .js .h-lapis { opacity: 0; animation: lay .6s ease-out 1.35s forwards; }
-  .js .h-gdot { opacity: 0; animation: lay .4s ease-out 2.1s forwards; }
-  .js .h-pen path { animation: ink .9s ease-out 1.75s forwards; }
-  .js .h-burnish { animation: burnish 1.5s cubic-bezier(.45,.05,.35,1) 2.25s 1 both; }
-  .js .h-ivy path { animation: ink 1.3s ease-out calc(1.2s + var(--t) * 1.4s) forwards; }
-  .js .h-leaf, .js .h-berry { transform: scale(0); transform-box: fill-box; transform-origin: 50% 100%; animation: bud .5s cubic-bezier(.3,1.5,.5,1) calc(1.5s + var(--t) * 1.5s) forwards; }
-  .js .h-berry { transform-origin: 50% 50%; }
 
   .js [data-reveal="paint"]:not(.is-in) img { filter: grayscale(1) sepia(.55) contrast(1.15) brightness(1.06); }
   .js [data-reveal="paint"] img { transition: filter 1.6s ease-out .15s; }
-  .js .hours .plate:not(.is-in) > a { clip-path: inset(0 0 100% 0); }
-  .js .hours .plate > a { transition: clip-path 1.1s cubic-bezier(.6,.05,.25,1) var(--d, 0s); }
   .js .shield:not(.is-in) .field { fill-opacity: 0; }
   .js .shield:not(.is-in) .charge { opacity: 0; transform: translateY(-4px); }
   .js .shield .field { transition: fill-opacity .7s ease-out; }
@@ -555,20 +574,16 @@ html.js:not(.late) .blue-ribbon { background-color: #234a8c; }
   .js .m-town use { transform-box: fill-box; transform-origin: 50% 100%; }
   .js .m-town.on use { animation: rise .55s cubic-bezier(.3,1.5,.5,1); }
 
+  .js .pendant:not(.is-in) .seal-img { opacity: 0; transform: translateY(-14px) scale(1.07); }
+  .js .pendant.is-in .seal-img { animation: stamp .55s cubic-bezier(.55,0,.4,1) .2s both; }
+  .js .book:not(.is-in) .pg-r .page { opacity: 0; }
+  .js .book .pg-r .page { transition: opacity .25s linear .4s; }
   .js .book:not(.is-in) .leaf { transform: rotateY(0deg); }
   .js .book .leaf { transition: transform 1.9s cubic-bezier(.55,.05,.25,1) .35s; }
   .js .book .leaf-front::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,.25)); opacity: 0; transition: opacity 1s ease-in .4s; pointer-events: none; }
   .js .book.is-in .leaf-front::after { opacity: 1; }
 
-  .js .pendant:not(.is-in) .seal-img { transform: translateY(-46px) scale(1.25); opacity: 0; }
-  .js .pendant .seal-img { transform-origin: 50% 70%; transition: transform .42s cubic-bezier(.7,0,.9,.6) .3s, opacity .25s linear .3s; }
-  .js .pendant.is-in .seal-swing { animation: swing 2.6s ease-out .75s; }
 
-}
-@media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
-  /* phones: the frame is ruled and gilded, the ivy is simply there */
-  .js .h-ivy path, .js .h-leaf, .js .h-berry { animation: none; stroke-dashoffset: 0; transform: none; }
-  .js .h-burnish { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -581,8 +596,7 @@ html.js:not(.late) .blue-ribbon { background-color: #234a8c; }
 @keyframes inkin { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: blur(0); } }
 @keyframes wash { from { filter: grayscale(1) sepia(.6) contrast(1.15); } to { filter: none; } }
 @keyframes rise { from { transform: translateY(6px) scale(.6); } to { transform: none; } }
-@keyframes swing { 0% { transform: rotate(0); } 20% { transform: rotate(7deg); } 45% { transform: rotate(-4.5deg); } 70% { transform: rotate(2deg); } 100% { transform: rotate(0); } }
-@keyframes press { 0% { transform: scale(1); } 35% { transform: scale(.93, .9); } 100% { transform: scale(1); } }
+@keyframes stamp { 0% { opacity: 0; transform: translateY(-14px) scale(1.07); filter: drop-shadow(0 22px 14px rgba(42,26,12,.28)); } 20% { opacity: 1; } 62% { transform: translateY(0) scale(.975, .965); filter: drop-shadow(0 2px 1px rgba(42,26,12,.55)); } 100% { transform: none; filter: drop-shadow(0 4px 3px rgba(42,26,12,.45)); } }
 </style>
 </head>
 <body>
@@ -650,25 +664,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <section class="opening" id="top" aria-labelledby="title">
-  <div class="wrap">
-    <svg class="vine" viewBox="0 0 90 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false"><path class="v-stem" d="M42.7 -10C43.9 -5 47.4 10 49.5 20C51.6 30 53.8 40 55.5 50C57.2 60 58.6 70 59.6 80C60.5 90 61 100 61 110C61 120 60.5 130 59.5 140C58.6 150 57.1 160 55.5 170C53.8 180 51.6 190 49.5 200C47.4 210 44.9 220 42.7 230C40.5 240 38.2 250 36.3 260C34.5 270 32.7 280 31.5 290C30.3 300 29.5 310 29.2 320C28.8 330 29 340 29.7 350C30.3 360 31.5 370 32.9 380C34.4 390 36.4 400 38.4 410C40.4 420 42.8 430 45 440C47.3 450 49.7 460 51.7 470C53.7 480 55.7 490 57.1 500C58.6 510 59.7 520 60.4 530C61 540 61.2 550 60.8 560C60.5 570 59.6 580 58.4 590C57.2 600 55.5 610 53.6 620C51.7 630 49.4 640 47.2 650C45 660 42.6 670 40.4 680C38.3 690 36.1 700 34.5 710C32.8 720 31.3 730 30.4 740C29.5 750 29 760 29 770C29 780 29.5 790 30.5 800C31.4 810 32.9 820 34.6 830C36.3 840 38.4 850 40.6 860C42.7 870 46.2 885 47.4 890" pathLength="1"/><path class="v-tendril" d="M53.7 40c10.5 -6 23.5 -2 26.1 -18c1.3 -8 -7.8 -12 -8.4 -4" pathLength="1" style="--d:0.37s"/><path class="v-tendril" d="M60.9 102c-10.4 -6 -23.5 -2 -26.1 -18c-1.3 -8 7.8 -12 8.4 -4" pathLength="1" style="--d:0.48s"/><path class="v-tendril" d="M56.5 164c11.3 -6 25.5 -2 28.3 -18c1.4 -8 -8.5 -12 -9.1 -4" pathLength="1" style="--d:0.59s"/><path class="v-tendril" d="M43.6 226c-11.3 -6 -25.3 -2 -28.1 -18c-1.4 -8 8.4 -12 9 -4" pathLength="1" style="--d:0.70s"/><path class="v-tendril" d="M31.8 288c11.8 -6 26.7 -2 29.6 -18c1.5 -8 -8.9 -12 -9.5 -4" pathLength="1" style="--d:0.81s"/><path class="v-tendril" d="M29.7 350c-10.2 -6 -23 -2 -25.6 -18c-1.3 -8 7.7 -12 8.2 -4" pathLength="1" style="--d:0.92s"/><path class="v-tendril" d="M38.8 412c11.3 -6 25.4 -2 28.3 -18c1.4 -8 -8.5 -12 -9 -4" pathLength="1" style="--d:1.03s"/><path class="v-tendril" d="M52.5 474c-10.2 -6 -22.9 -2 -25.5 -18c-1.3 -8 7.6 -12 8.2 -4" pathLength="1" style="--d:1.14s"/><path class="v-tendril" d="M60.7 536c11.8 -6 26.5 -2 29.4 -18c1.5 -8 -8.8 -12 -9.4 -4" pathLength="1" style="--d:1.25s"/><path class="v-tendril" d="M57.4 598c-9.6 -6 -21.6 -2 -24 -18c-1.2 -8 7.2 -12 7.7 -4" pathLength="1" style="--d:1.36s"/><path class="v-tendril" d="M44.9 660c11.9 -6 26.9 -2 29.9 -18c1.5 -8 -9 -12 -9.6 -4" pathLength="1" style="--d:1.47s"/><path class="v-tendril" d="M32.6 722c-11.1 -6 -25 -2 -27.7 -18c-1.4 -8 8.3 -12 8.9 -4" pathLength="1" style="--d:1.58s"/><path class="v-tendril" d="M29.3 784c12.3 -6 27.6 -2 30.7 -18c1.5 -8 -9.2 -12 -9.8 -4" pathLength="1" style="--d:1.69s"/><path class="v-tendril" d="M37.6 846c-10.2 -6 -22.9 -2 -25.4 -18c-1.3 -8 7.6 -12 8.1 -4" pathLength="1" style="--d:1.80s"/><g class="v-leaf" style="--d:0.77s" transform="translate(68 50) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:0.88s" transform="translate(46.5 112) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-berry" style="--d:1.19s" transform="translate(84.8 142)"><circle r="4.6" class="b-blue"/></g><g class="v-leaf" style="--d:0.99s" transform="translate(72 174) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.10s" transform="translate(28.1 236) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.21s" transform="translate(48.1 298) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-berry" style="--d:1.52s" transform="translate(4.1 328)"><circle r="4.6" class="b-red"/></g><g class="v-leaf" style="--d:1.32s" transform="translate(15.6 360) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.43s" transform="translate(54.4 422) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.54s" transform="translate(38.5 484) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-berry" style="--d:1.85s" transform="translate(90.1 514)"><circle r="4.6" class="b-blue"/></g><g class="v-leaf" style="--d:1.65s" transform="translate(76.9 546) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.76s" transform="translate(44.1 608) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:1.87s" transform="translate(61.4 670) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-berry" style="--d:2.18s" transform="translate(4.8 700)"><circle r="4.6" class="b-red"/></g><g class="v-leaf" style="--d:1.98s" transform="translate(17.3 732) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:2.09s" transform="translate(46.2 794) rotate(50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g><g class="v-leaf" style="--d:2.20s" transform="translate(23.6 856) rotate(-50)"><path d="M0 0c-7 -3 -11 -10 -7 -15c2 -2 5 -2 7 1c2 -3 5 -3 7 -1c4 5 0 12 -7 15z"/></g></svg>
-    <div class="incipit">
+  <div class="fronti">
+    <picture class="fronti-art">
+      <source media="(max-width: 700px)" type="image/avif" srcset="img/art/frontispiece-m-480.avif 480w, img/art/frontispiece-m.avif 766w" sizes="100vw">
+      <source media="(max-width: 700px)" type="image/webp" srcset="img/art/frontispiece-m-480.webp 480w, img/art/frontispiece-m.webp 766w" sizes="100vw">
+      <source type="image/avif" srcset="img/art/frontispiece-960.avif 960w, img/art/frontispiece.avif 1276w" sizes="min(100vw, 1440px)">
+      <img src="img/art/frontispiece.webp" srcset="img/art/frontispiece-960.webp 960w, img/art/frontispiece.webp 1276w" sizes="min(100vw, 1440px)" alt="Sir Claude in silver armour and a blue surcoat with a gold crown stands on a ridge beside his crowned red banner, looking over a valley of walled towns, a river and a castle on the far hill" width="1276" height="716" fetchpriority="high" decoding="sync">
+    </picture>
+    <div class="fronti-title">
       <h1 id="title"><span class="initial" aria-hidden="true"><svg viewBox="0 0 100 100"><g class="gild-wrap"><rect class="gild" x="1" y="1" width="98" height="98"/><rect x="9" y="9" width="82" height="82" fill="#f3ead4" stroke="#2a2017" stroke-width="1.2"/><path d="M9 9h82v82H9z" fill="none" stroke="#a3241c" stroke-width="3" transform="translate(5 5) scale(.9)" opacity=".9"/><path d="M18 80c10-4 12-14 22-14M82 20c-10 4-12 14-22 14M18 20c5 6 4 12 10 14M82 80c-5-6-4-12-10-14" fill="none" stroke="#2e6844" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="80" r="3.4" fill="#a3241c"/><circle cx="82" cy="20" r="3.4" fill="#a3241c"/><circle cx="18" cy="20" r="3" fill="#234a8c"/><circle cx="82" cy="80" r="3" fill="#234a8c"/><rect x="1" y="1" width="98" height="98" fill="none" stroke="#2a2017" stroke-width="1.6"/></g></svg></span><span class="t"><span class="cap">S</span>ir Claude</span></h1>
       <p class="sub">and the Kingdom of Many Repos</p>
-      <p class="metaphor">Every repo on your machine becomes a town. Every Claude Code session becomes a knight at work. You get the throne.</p>
-      <p class="plain">A local control room for Claude Code: a free npm package (<code>npx sir-claude</code>) that opens a dashboard on 127.0.0.1. No account, no cloud, macOS first. Closed source; members can ask for the code.</p>
-      <div class="cta">
+    </div>
+  </div>
+  <div class="plinth">
+    <svg class="plinth-orn" viewBox="0 0 120 20" aria-hidden="true"><path d="M2 10h44M74 10h44" stroke="#2a2017" stroke-width="1"/><path d="M60 2c4 5 8 6 13 8-5 2-9 3-13 8-4-5-8-6-13-8 5-2 9-3 13-8z" fill="#a3241c"/><circle cx="40" cy="10" r="2" fill="#234a8c"/><circle cx="80" cy="10" r="2" fill="#234a8c"/></svg>
+    <p class="metaphor">Every repo on your machine becomes a town. Every Claude Code session becomes a knight at work. You get the throne.</p>
+    <div class="cta">
         <a class="btn red" href="#tour">Take the tour</a>
         <a class="btn" href="#install">Run it</a>
       </div>
-    </div>
-    <figure class="miniature">
-      <div class="arch">
-        <picture><source srcset="img/art/hero-knight-420.avif 420w, img/art/hero-knight.avif 640w" sizes="(max-width: 900px) 230px, 340px" type="image/avif"><img src="img/art/hero-knight.webp" srcset="img/art/hero-knight-420.webp 420w, img/art/hero-knight.webp 640w" sizes="(max-width: 900px) 230px, 340px" alt="Sir Claude painted as a manuscript miniature: a knight in silver armour with a blue surcoat and shield bearing a gold crown, on a red ground of gold vines" width="640" height="873" fetchpriority="high"></picture>
-        <svg class="frame" viewBox="0 0 250 300" aria-hidden="true" focusable="false"><defs><path id="h-lf" d="M0 0c-2.6-1-4.4-3.4-3.6-5.6c.9.3 1.8.2 2.4-.4c-.6-1.2-.2-2.6.9-3.2c.5 1 .9 1.1 .3 1.1c.6 0 .3-.1.8-1.1c1.1.6 1.5 2 .9 3.2c.6.6 1.5.7 2.4.4c.8 2.2-1 4.6-3.6 5.6z"/><clipPath id="h-gold-clip"><path d="M19 9H231V291H19ZM26 16V284H224V16Z" clip-rule="evenodd"/></clipPath></defs><path class="h-gold" d="M19 9H231V291H19ZM26 16V284H224V16Z" fill-rule="evenodd"/><path class="h-pounce" d="M24 12.5H226M24 287.5H226M22.5 19V283M227.5 19V283"/><g clip-path="url(#h-gold-clip)"><path class="h-burnish" d="M-60 -20h26l-90 340h-26z"/></g><path class="h-lapis" d="M26 16H224V104C224 56 160 34 125 22C90 34 26 56 26 104Z"/><g class="h-pen"><path d="M30 92C32 62 52 44 84 31" pathLength="1"/><path d="M42 58c-4-4 -1-10 4-8c4 2 3 7 -1 7" pathLength="1"/><path d="M56 41c-2-5 2-9 6-7c3 2 2 6 -1 6" pathLength="1"/><path d="M32 34c6-3 10-9 20-12" pathLength="1"/><path d="M35 76c1-6 4-10 9-12" pathLength="1"/><path d="M220 92C218 62 198 44 166 31" pathLength="1"/><path d="M208 58c4-4 1-10 -4-8c-4 2 -3 7 1 7" pathLength="1"/><path d="M194 41c2-5 -2-9 -6-7c-3 2 -2 6 1 6" pathLength="1"/><path d="M218 34c-6-3 -10-9 -20-12" pathLength="1"/><path d="M215 76c-1-6 -4-10 -9-12" pathLength="1"/></g><g class="h-gdot"><circle cx="36" cy="24" r="1.1"/><circle cx="214" cy="24" r="1.1"/><circle cx="70" cy="22" r="1.1"/><circle cx="180" cy="22" r="1.1"/><circle cx="100" cy="19" r="1.1"/><circle cx="150" cy="19" r="1.1"/><circle cx="30" cy="48" r="1.1"/><circle cx="220" cy="48" r="1.1"/><circle cx="48" cy="30" r="1.1"/><circle cx="202" cy="30" r="1.1"/><circle cx="40" cy="88" r="1.1"/><circle cx="210" cy="88" r="1.1"/><circle cx="62" cy="40" r="1.1"/><circle cx="188" cy="40" r="1.1"/></g><path class="h-red" d="M26 284V104C26 56 90 34 125 22C160 34 224 56 224 104V284" pathLength="1"/><g class="h-rule"><path d="M16 6H234V294H16Z" pathLength="1"/><path d="M19 9H231V291H19Z" pathLength="1"/><path d="M26 16H224V284H26Z" pathLength="1"/></g><g class="h-ivy"><path d="M8.8 296 7.4 284 6.2 272 5.5 260 5.5 248 6.1 236 7.2 224 8.5 212 9.7 200 10.5 188 10.5 176 9.9 164 8.8 152 7.5 140 6.3 128 5.5 116 5.4 104 6 92 7.1 80 8.5 68 9.7 56 10.4 44 10.6 32 10 20" pathLength="1" style="--t:0.00"/><path d="M7.2 282Q6 276 1.2 275" pathLength="1" style="--t:0.05"/><path d="M5.8 265Q6.8 259 10.8 258" pathLength="1" style="--t:0.11"/><path d="M5.8 262c-1.5-2 -2.5-5 -1.5-8" pathLength="1" style="--t:0.11"/><path d="M5.5 248Q4.3 242 -0.5 241" pathLength="1" style="--t:0.18"/><path d="M6.5 231Q7.5 225 11.5 224" pathLength="1" style="--t:0.24"/><path d="M8.3 214Q7.1 208 2.3 207" pathLength="1" style="--t:0.30"/><path d="M8.3 211c1.8-2 3-5 1.8-8" pathLength="1" style="--t:0.30"/><path d="M10 197Q11 191 15 190" pathLength="1" style="--t:0.37"/><path d="M10.6 180Q9.4 174 4.6 173" pathLength="1" style="--t:0.43"/><path d="M9.9 163Q10.9 157 14.9 156" pathLength="1" style="--t:0.49"/><path d="M9.9 160c-1.5-2 -2.5-5 -1.5-8" pathLength="1" style="--t:0.49"/><path d="M8.2 146Q7 140 2.2 139" pathLength="1" style="--t:0.56"/><path d="M6.4 129Q7.4 123 11.4 122" pathLength="1" style="--t:0.62"/><path d="M5.4 112Q4.2 106 -0.6 105" pathLength="1" style="--t:0.68"/><path d="M5.4 109c1.8-2 3-5 1.8-8" pathLength="1" style="--t:0.68"/><path d="M5.8 95Q6.8 89 10.8 88" pathLength="1" style="--t:0.74"/><path d="M7.4 78Q6.2 72 1.4 71" pathLength="1" style="--t:0.81"/><path d="M9.2 61Q10.2 55 14.2 54" pathLength="1" style="--t:0.87"/><path d="M9.2 58c-1.5-2 -2.5-5 -1.5-8" pathLength="1" style="--t:0.87"/><path d="M10.4 44Q9.2 38 4.4 37" pathLength="1" style="--t:0.93"/><path d="M10.4 27Q11.4 21 15.4 20" pathLength="1" style="--t:1.00"/><path d="M241.2 296 242.6 284 243.8 272 244.5 260 244.5 248 243.9 236 242.8 224 241.5 212 240.3 200 239.5 188 239.5 176 240.1 164 241.2 152 242.5 140 243.7 128 244.5 116 244.6 104 244 92 242.9 80 241.5 68 240.3 56 239.6 44 239.4 32 240 20" pathLength="1" style="--t:0.00"/><path d="M242.8 282Q244 276 248.8 275" pathLength="1" style="--t:0.05"/><path d="M244.2 265Q243.2 259 239.2 258" pathLength="1" style="--t:0.11"/><path d="M244.2 262c1.5-2 2.5-5 1.5-8" pathLength="1" style="--t:0.11"/><path d="M244.5 248Q245.7 242 250.5 241" pathLength="1" style="--t:0.18"/><path d="M243.5 231Q242.5 225 238.5 224" pathLength="1" style="--t:0.24"/><path d="M241.7 214Q242.9 208 247.7 207" pathLength="1" style="--t:0.30"/><path d="M241.7 211c-1.8-2 -3-5 -1.8-8" pathLength="1" style="--t:0.30"/><path d="M240 197Q239 191 235 190" pathLength="1" style="--t:0.37"/><path d="M239.4 180Q240.6 174 245.4 173" pathLength="1" style="--t:0.43"/><path d="M240.1 163Q239.1 157 235.1 156" pathLength="1" style="--t:0.49"/><path d="M240.1 160c1.5-2 2.5-5 1.5-8" pathLength="1" style="--t:0.49"/><path d="M241.8 146Q243 140 247.8 139" pathLength="1" style="--t:0.56"/><path d="M243.6 129Q242.6 123 238.6 122" pathLength="1" style="--t:0.62"/><path d="M244.6 112Q245.8 106 250.6 105" pathLength="1" style="--t:0.68"/><path d="M244.6 109c-1.8-2 -3-5 -1.8-8" pathLength="1" style="--t:0.68"/><path d="M244.2 95Q243.2 89 239.2 88" pathLength="1" style="--t:0.74"/><path d="M242.6 78Q243.8 72 248.6 71" pathLength="1" style="--t:0.81"/><path d="M240.8 61Q239.8 55 235.8 54" pathLength="1" style="--t:0.87"/><path d="M240.8 58c1.5-2 2.5-5 1.5-8" pathLength="1" style="--t:0.87"/><path d="M239.6 44Q240.8 38 245.6 37" pathLength="1" style="--t:0.93"/><path d="M239.6 27Q238.6 21 234.6 20" pathLength="1" style="--t:1.00"/><g transform="translate(1.2 275) rotate(-35)"><use class="h-leaf g" style="--t:0.05" href="#h-lf"/></g><g transform="translate(10.8 258) rotate(35)"><use class="h-leaf g" style="--t:0.11" href="#h-lf"/></g><g transform="translate(4.3 253.6)"><circle class="h-berry" style="--t:0.11" r="1.2"/></g><g transform="translate(-0.5 241) rotate(-35)"><use class="h-leaf b" style="--t:0.18" href="#h-lf"/></g><g transform="translate(11.5 224) rotate(35)"><use class="h-leaf g" style="--t:0.24" href="#h-lf"/></g><g transform="translate(2.3 207) rotate(-35)"><use class="h-leaf r" style="--t:0.30" href="#h-lf"/></g><g transform="translate(10.1 202.6)"><circle class="h-berry" style="--t:0.30" r="1.2"/></g><g transform="translate(15 190) rotate(35)"><use class="h-leaf g" style="--t:0.37" href="#h-lf"/></g><g transform="translate(4.6 173) rotate(-35)"><use class="h-leaf g" style="--t:0.43" href="#h-lf"/></g><g transform="translate(14.9 156) rotate(35)"><use class="h-leaf g" style="--t:0.49" href="#h-lf"/></g><g transform="translate(8.4 151.6)"><circle class="h-berry" style="--t:0.49" r="1.2"/></g><g transform="translate(2.2 139) rotate(-35)"><use class="h-leaf b" style="--t:0.56" href="#h-lf"/></g><g transform="translate(11.4 122) rotate(35)"><use class="h-leaf g" style="--t:0.62" href="#h-lf"/></g><g transform="translate(-0.6 105) rotate(-35)"><use class="h-leaf r" style="--t:0.68" href="#h-lf"/></g><g transform="translate(7.2 100.6)"><circle class="h-berry" style="--t:0.68" r="1.2"/></g><g transform="translate(10.8 88) rotate(35)"><use class="h-leaf g" style="--t:0.74" href="#h-lf"/></g><g transform="translate(1.4 71) rotate(-35)"><use class="h-leaf g" style="--t:0.81" href="#h-lf"/></g><g transform="translate(14.2 54) rotate(35)"><use class="h-leaf g" style="--t:0.87" href="#h-lf"/></g><g transform="translate(7.7 49.6)"><circle class="h-berry" style="--t:0.87" r="1.2"/></g><g transform="translate(4.4 37) rotate(-35)"><use class="h-leaf b" style="--t:0.93" href="#h-lf"/></g><g transform="translate(15.4 20) rotate(35)"><use class="h-leaf g" style="--t:1.00" href="#h-lf"/></g><g transform="translate(248.8 275) rotate(35)"><use class="h-leaf g" style="--t:0.05" href="#h-lf"/></g><g transform="translate(239.2 258) rotate(-35)"><use class="h-leaf g" style="--t:0.11" href="#h-lf"/></g><g transform="translate(245.7 253.6)"><circle class="h-berry" style="--t:0.11" r="1.2"/></g><g transform="translate(250.5 241) rotate(35)"><use class="h-leaf b" style="--t:0.18" href="#h-lf"/></g><g transform="translate(238.5 224) rotate(-35)"><use class="h-leaf g" style="--t:0.24" href="#h-lf"/></g><g transform="translate(247.7 207) rotate(35)"><use class="h-leaf r" style="--t:0.30" href="#h-lf"/></g><g transform="translate(239.9 202.6)"><circle class="h-berry" style="--t:0.30" r="1.2"/></g><g transform="translate(235 190) rotate(-35)"><use class="h-leaf g" style="--t:0.37" href="#h-lf"/></g><g transform="translate(245.4 173) rotate(35)"><use class="h-leaf g" style="--t:0.43" href="#h-lf"/></g><g transform="translate(235.1 156) rotate(-35)"><use class="h-leaf g" style="--t:0.49" href="#h-lf"/></g><g transform="translate(241.6 151.6)"><circle class="h-berry" style="--t:0.49" r="1.2"/></g><g transform="translate(247.8 139) rotate(35)"><use class="h-leaf b" style="--t:0.56" href="#h-lf"/></g><g transform="translate(238.6 122) rotate(-35)"><use class="h-leaf g" style="--t:0.62" href="#h-lf"/></g><g transform="translate(250.6 105) rotate(35)"><use class="h-leaf r" style="--t:0.68" href="#h-lf"/></g><g transform="translate(242.8 100.6)"><circle class="h-berry" style="--t:0.68" r="1.2"/></g><g transform="translate(239.2 88) rotate(-35)"><use class="h-leaf g" style="--t:0.74" href="#h-lf"/></g><g transform="translate(248.6 71) rotate(35)"><use class="h-leaf g" style="--t:0.81" href="#h-lf"/></g><g transform="translate(235.8 54) rotate(-35)"><use class="h-leaf g" style="--t:0.87" href="#h-lf"/></g><g transform="translate(242.3 49.6)"><circle class="h-berry" style="--t:0.87" r="1.2"/></g><g transform="translate(245.6 37) rotate(35)"><use class="h-leaf b" style="--t:0.93" href="#h-lf"/></g><g transform="translate(234.6 20) rotate(-35)"><use class="h-leaf g" style="--t:1.00" href="#h-lf"/></g></g></svg>
-      </div>
-      <figcaption>AI Knight, Keeper of the Realm</figcaption>
-    </figure>
+    <p class="plain">A local control room for Claude Code: a free npm package (<code>npx sir-claude</code>) that opens a dashboard on 127.0.0.1. No account, no cloud, macOS first. Closed source; members can ask for the code.</p>
   </div>
 </section>
 
@@ -676,7 +691,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <figure class="plate flyover" data-reveal="paint">
       <a href="screenshots/flyover.webm" target="_blank" rel="noopener" aria-label="Open the kingdom flyover video">
-        <video class="flyover-video" muted loop playsinline preload="none" poster="screenshots/landscape-day.webp" width="1364" height="738">
+        <video class="flyover-video" muted loop playsinline preload="none" poster="screenshots/landscape-day-800.webp" width="1364" height="738">
           <source src="screenshots/flyover.webm" type="video/webm">
         </video>
       </a>
@@ -721,7 +736,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <section class="folio chapter" id="kingdom">
-    <figure class="art wide" data-reveal><picture><source type="image/avif" srcset="img/art/town-800.avif 800w, img/art/town.avif 1266w" sizes="(max-width: 900px) 100vw, min(100vw, 1266px)"><img src="img/art/town.webp" srcset="img/art/town-800.webp 800w, img/art/town.webp 1266w" sizes="(max-width: 900px) 100vw, min(100vw, 1266px)" alt="" width="1266" height="706" loading="lazy" decoding="async"></picture></figure>
+    <figure class="art wide" data-reveal><picture><source type="image/avif" srcset="img/art/town-800.avif 800w, img/art/town.avif 1266w" sizes="(max-width: 900px) 100vw, min(100vw, 1266px)"><img src="img/art/town.webp" srcset="img/art/town-800.webp 800w, img/art/town.webp 1266w" sizes="(max-width: 900px) 100vw, min(100vw, 1266px)" alt="" width="1266" height="706" loading="eager" fetchpriority="low" decoding="async"></picture></figure>
     <div class="wrap">
       <header class="chead">
         <svg class="shield" data-reveal viewBox="0 0 40 48" aria-hidden="true" focusable="false"><path class="field" fill="#2b4f93" d="M2 2H38V22C38 36 20 46 20 46S2 36 2 22Z"/><path class="charge" fill="#d4a446" d="M12 35V17h3.5v-4h3v4h3v-4h3v4H28v18Z"/><path class="charge" fill="#231d17" d="M18 35v-6a2 2 0 0 1 4 0v6Z"/><path class="outline" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" pathLength="1" d="M2 2H38V22C38 36 20 46 20 46S2 36 2 22Z"/></svg>
@@ -734,35 +749,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="marg">Three.js, with day, night and weather. Halloween, Winter and Christmas arrive on their own.</p>
         </div>
         <figure class="plate" data-reveal="paint">
-          <a href="screenshots/landscape-day.webp" target="_blank" rel="noopener"><img src="screenshots/landscape-day.webp" alt="A landscape to the horizon" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/landscape-day.webp" target="_blank" rel="noopener"><img src="screenshots/landscape-day.webp" srcset="screenshots/landscape-day-800.webp 800w, screenshots/landscape-day.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="A landscape to the horizon" width="1364" height="738" loading="eager" fetchpriority="low" decoding="async"></a>
           <figcaption><strong>A landscape to the horizon</strong> </figcaption>
         </figure>
       </div>
       <div class="hours">
         <figure class="plate" data-reveal="paint" style="--d:0s">
-          <a href="screenshots/kingdom-night.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-night.webp" alt="Night" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/kingdom-night.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-night.webp" srcset="screenshots/kingdom-night-800.webp 800w, screenshots/kingdom-night.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="Night" width="1364" height="738" loading="lazy" decoding="async"></a>
           <figcaption><strong>Night</strong> </figcaption>
         </figure>
         <figure class="plate" data-reveal="paint" style="--d:.15s">
-          <a href="screenshots/kingdom-halloween.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-halloween.webp" alt="Halloween" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/kingdom-halloween.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-halloween.webp" srcset="screenshots/kingdom-halloween-800.webp 800w, screenshots/kingdom-halloween.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="Halloween" width="1364" height="738" loading="lazy" decoding="async"></a>
           <figcaption><strong>Halloween</strong> </figcaption>
         </figure>
         <figure class="plate" data-reveal="paint" style="--d:.3s">
-          <a href="screenshots/kingdom-winter.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-winter.webp" alt="Winter" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/kingdom-winter.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-winter.webp" srcset="screenshots/kingdom-winter-800.webp 800w, screenshots/kingdom-winter.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="Winter" width="1364" height="738" loading="lazy" decoding="async"></a>
           <figcaption><strong>Winter</strong> </figcaption>
         </figure>
         <figure class="plate" data-reveal="paint" style="--d:.45s">
-          <a href="screenshots/kingdom-christmas.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-christmas.webp" alt="Christmas" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/kingdom-christmas.webp" target="_blank" rel="noopener"><img src="screenshots/kingdom-christmas.webp" srcset="screenshots/kingdom-christmas-800.webp 800w, screenshots/kingdom-christmas.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="Christmas" width="1364" height="738" loading="lazy" decoding="async"></a>
           <figcaption><strong>Christmas</strong> </figcaption>
         </figure>
       </div>
       <div class="pair">
         <figure class="plate" data-reveal="paint">
-          <a href="screenshots/folk-bubble.webp" target="_blank" rel="noopener"><img src="screenshots/folk-bubble.webp" alt="Wandering folk, who talk back" width="1364" height="738" loading="lazy" decoding="async"></a>
+          <a href="screenshots/folk-bubble.webp" target="_blank" rel="noopener"><img src="screenshots/folk-bubble.webp" srcset="screenshots/folk-bubble-800.webp 800w, screenshots/folk-bubble.webp 1364w" sizes="(max-width: 900px) 100vw, 720px" alt="Wandering folk, who talk back" width="1364" height="738" loading="lazy" decoding="async"></a>
           <figcaption><strong>Wandering folk, who talk back</strong> </figcaption>
         </figure>
         <figure class="plate" data-reveal="paint">
-          <a href="screenshots/armoury.webp" target="_blank" rel="noopener"><img src="screenshots/armoury.webp" alt="The Armoury: 4,000+ KayKit models" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/armoury.webp" target="_blank" rel="noopener"><img src="screenshots/armoury.webp" srcset="screenshots/armoury-800.webp 800w, screenshots/armoury.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="The Armoury: 4,000+ KayKit models" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>The Armoury: 4,000+ KayKit models</strong> </figcaption>
         </figure>
       </div>
@@ -799,7 +814,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <figure class="plate" data-reveal="paint">
-          <a href="screenshots/spellbook-conjure-crop.webp" target="_blank" rel="noopener"><img src="screenshots/spellbook-conjure-crop.webp" alt="Conjuring a spell" width="1368" height="632" loading="lazy" decoding="async"></a>
+          <a href="screenshots/spellbook-conjure-crop.webp" target="_blank" rel="noopener"><img src="screenshots/spellbook-conjure-crop.webp" srcset="screenshots/spellbook-conjure-crop-800.webp 800w, screenshots/spellbook-conjure-crop.webp 1368w" sizes="(max-width: 900px) 100vw, 720px" alt="Conjuring a spell" width="1368" height="632" loading="lazy" decoding="async"></a>
           <figcaption><strong>Conjuring a spell</strong> </figcaption>
         </figure>
     </div>
@@ -818,7 +833,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <figure class="plate" data-reveal="paint">
-          <a href="screenshots/terminal.webp" target="_blank" rel="noopener"><img src="screenshots/terminal.webp" alt="A shell in the harbour project" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/terminal.webp" target="_blank" rel="noopener"><img src="screenshots/terminal.webp" srcset="screenshots/terminal-800.webp 800w, screenshots/terminal.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="A shell in the harbour project" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>A shell in the harbour project</strong> </figcaption>
         </figure>
     </div>
@@ -837,7 +852,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <figure class="plate" data-reveal="paint">
-          <a href="screenshots/quests.webp" target="_blank" rel="noopener"><img src="screenshots/quests.webp" alt="The Quest Board" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/quests.webp" target="_blank" rel="noopener"><img src="screenshots/quests.webp" srcset="screenshots/quests-800.webp 800w, screenshots/quests.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="The Quest Board" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>The Quest Board</strong> </figcaption>
         </figure>
     </div>
@@ -853,7 +868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Processes</h3>
           <p>Every chat and shell that runs or waits for you. Click to jump there.</p>
           <figure class="plate" data-reveal="paint">
-          <a href="screenshots/processes.webp" target="_blank" rel="noopener"><img src="screenshots/processes.webp" alt="Processes" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/processes.webp" target="_blank" rel="noopener"><img src="screenshots/processes.webp" srcset="screenshots/processes-800.webp 800w, screenshots/processes.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="Processes" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>Processes</strong> </figcaption>
         </figure>
         </section>
@@ -862,7 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Git, files &amp; usage</h3>
           <p>Diffs and commits, <kbd>⌘P</kbd> and <kbd>⌘⇧F</kbd>, and your plan limits.</p>
           <figure class="plate" data-reveal="paint">
-          <a href="screenshots/files-search-crop.webp" target="_blank" rel="noopener"><img src="screenshots/files-search-crop.webp" alt="Search in files" width="1080" height="952" loading="lazy" decoding="async"></a>
+          <a href="screenshots/files-search-crop.webp" target="_blank" rel="noopener"><img src="screenshots/files-search-crop.webp" srcset="screenshots/files-search-crop-800.webp 800w, screenshots/files-search-crop.webp 1080w" sizes="(max-width: 900px) 100vw, 720px" alt="Search in files" width="1080" height="952" loading="lazy" decoding="async"></a>
           <figcaption><strong>Search in files</strong> </figcaption>
         </figure>
         </section>
@@ -871,7 +886,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Insights</h3>
           <p>Cost and hours by day, project and model, at API prices, not your bill.</p>
           <figure class="plate" data-reveal="paint">
-          <a href="screenshots/insights.webp" target="_blank" rel="noopener"><img src="screenshots/insights.webp" alt="Insights" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/insights.webp" target="_blank" rel="noopener"><img src="screenshots/insights.webp" srcset="screenshots/insights-800.webp 800w, screenshots/insights.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="Insights" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>Insights</strong> </figcaption>
         </figure>
         </section>
@@ -891,10 +906,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="marg">His personality is a markdown file. Edit at your own risk.</p>
         </div>
       </div>
-      <figure class="plate" data-reveal="paint">
-          <a href="screenshots/about.webp" target="_blank" rel="noopener"><img src="screenshots/about.webp" alt="Sir Claude’s own portrait, in the About dialog" width="1600" height="1000" loading="lazy" decoding="async"></a>
-          <figcaption><strong>Sir Claude’s own portrait, in the About dialog</strong> </figcaption>
-        </figure>
+      <figure class="showcase" data-reveal>
+        <div class="sc-card">
+          <div class="sc-left">
+            <div class="sc-arch"><picture><source type="image/avif" srcset="img/art/hero-knight-420.avif 420w, img/art/hero-knight.avif 640w" sizes="(max-width: 900px) 46vw, 240px"><img src="img/art/hero-knight-420.webp" srcset="img/art/hero-knight-420.webp 420w, img/art/hero-knight.webp 640w" sizes="(max-width: 900px) 46vw, 240px" alt="Sir Claude painted as a manuscript miniature: a knight in silver armour with a blue surcoat and a shield bearing a gold crown" width="640" height="873" loading="lazy" decoding="async"></picture></div>
+            <p class="sc-name">Sir Claude</p>
+            <p class="sc-title">AI Knight · Keeper of the Realm</p>
+          </div>
+          <div class="sc-right">
+            <svg class="sc-tower" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 34V16h5v-5h4v5h6v-5h4v5h5v18Z" fill="#a3241c" stroke="#2a2017" stroke-width="1.4"/><path d="M17 34v-7a3 3 0 0 1 6 0v7Z" fill="#2a2017"/></svg>
+            <p class="sc-pre">The Chronicle of</p>
+            <p class="sc-h">The Kingdom of Code</p>
+            <p class="sc-sub">Claude Dashboard · a control room for every project on this machine</p>
+            <span class="sc-btn">Read the full chronicle</span>
+            <p class="sc-tale">In a land of a hundred repositories, scattered across folders and forgotten terminals, there lived a developer who wished to see the whole realm at once. Not one shell at a time.</p>
+          </div>
+        </div>
+        <figcaption><strong>The About dialog</strong>, redrawn in ink for this page; in the app it is a dark panel.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -911,7 +940,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <figure class="plate" data-reveal="paint">
-          <a href="screenshots/telegram.webp" target="_blank" rel="noopener"><img src="screenshots/telegram.webp" alt="Every message in and out" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/telegram.webp" target="_blank" rel="noopener"><img src="screenshots/telegram.webp" srcset="screenshots/telegram-800.webp 800w, screenshots/telegram.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="Every message in and out" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>Every message in and out</strong> </figcaption>
         </figure>
     </div>
@@ -930,7 +959,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="dropcap">Give your prompts checks, from a regex to an LLM judge. Run Claude, GPT, Gemini, Grok and friends through OpenRouter, compare pass rate, cost and latency, and crown a champion.</p>
         </div>
         <figure class="plate" data-reveal="paint">
-          <a href="screenshots/proving-grounds.webp" target="_blank" rel="noopener"><img src="screenshots/proving-grounds.webp" alt="The tourney" width="1600" height="1000" loading="lazy" decoding="async"></a>
+          <a href="screenshots/proving-grounds.webp" target="_blank" rel="noopener"><img src="screenshots/proving-grounds.webp" srcset="screenshots/proving-grounds-800.webp 800w, screenshots/proving-grounds.webp 1600w" sizes="(max-width: 900px) 100vw, 720px" alt="The tourney" width="1600" height="1000" loading="lazy" decoding="async"></a>
           <figcaption><strong>The tourney</strong> </figcaption>
         </figure>
       </div>
@@ -951,22 +980,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="book" data-reveal>
         <div class="codex">
           <picture><source srcset="img/art/codex.avif" type="image/avif"><img class="codex-img" src="img/art/codex.webp" alt="" width="1212" height="692" loading="lazy" decoding="async"></picture>
-          <div class="pg pg-l"><span class="pg-orn" aria-hidden="true"></span>
-            <a class="no-leaf" href="screenshots/chronicle.webp" target="_blank" rel="noopener"><img src="screenshots/chronicle.webp" alt="The Chronicle" width="1600" height="1000" loading="lazy" decoding="async"></a>
-          </div>
           <div class="pg pg-r">
-            <a href="screenshots/chronicle-chapter.webp" target="_blank" rel="noopener"><img src="screenshots/chronicle-chapter.webp" alt="A chapter of the Chronicle" width="1600" height="1000" loading="lazy" decoding="async"></a>
+            <div class="page"><p class="rh"><span>Chapter XXIV</span><span>fol. xxiv</span></p><a class="fplate" href="screenshots/chronicle-chapter.webp" target="_blank" rel="noopener"><img src="screenshots/chronicle-chapter.webp" srcset="screenshots/chronicle-chapter-800.webp 800w, screenshots/chronicle-chapter.webp 1600w" sizes="(max-width: 900px) 40vw, 340px" alt="A chapter of the Chronicle: The Roll Call" width="1600" height="1000" loading="lazy" decoding="async"></a><p class="fcap">The Roll Call</p><p class="fnote">Each chapter opens with its own picture and a drop cap.</p><svg class="fleur" viewBox="0 0 60 12" aria-hidden="true"><path d="M2 6h20M38 6h20" stroke="#2a2017" stroke-width=".8"/><path d="M30 1c2.4 3 4.8 3.6 7.8 5-3 1.4-5.4 2-7.8 5-2.4-3-4.8-3.6-7.8-5 3-1.4 5.4-2 7.8-5z" fill="#a3241c"/></svg></div>
           </div>
           <div class="leaf">
             <div class="leaf-face leaf-front" aria-hidden="true"><span class="lf-title">The Chronicle</span><span class="lf-sub">of Sir Claude and the Kingdom of Many Repos</span></div>
             <div class="leaf-face leaf-back">
-              <a href="screenshots/chronicle.webp" target="_blank" rel="noopener"><img src="screenshots/chronicle.webp" alt="The Chronicle" width="1600" height="1000" loading="lazy" decoding="async"></a>
+              <div class="page"><p class="rh"><span>The Chronicle</span><span>fol. i</span></p><a class="fplate" href="screenshots/chronicle.webp" target="_blank" rel="noopener"><img src="screenshots/chronicle.webp" srcset="screenshots/chronicle-800.webp 800w, screenshots/chronicle.webp 1600w" sizes="(max-width: 900px) 40vw, 340px" alt="The Chronicle: its title page and table of chapters" width="1600" height="1000" loading="lazy" decoding="async"></a><p class="fcap">Here beginneth the Chronicle</p><p class="fnote">The title page and the table of chapters.</p><svg class="fleur" viewBox="0 0 60 12" aria-hidden="true"><path d="M2 6h20M38 6h20" stroke="#2a2017" stroke-width=".8"/><path d="M30 1c2.4 3 4.8 3.6 7.8 5-3 1.4-5.4 2-7.8 5-2.4-3-4.8-3.6-7.8-5 3-1.4 5.4-2 7.8-5z" fill="#a3241c"/></svg></div>
             </div>
           </div>
-        </div>
-        <div class="book-caps">
-          <p class="cap">The Chronicle, opened</p>
-          <p class="cap">Chapter XXIV, The Roll Call</p>
         </div>
       </div>
     </div>
@@ -1002,6 +1024,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="install" id="install">
     <div class="wrap">
+      <div class="charter-wrap">
       <div class="charter">
         <figure class="art headpiece" data-reveal><picture><source type="image/avif" srcset="img/art/road-800.avif 800w, img/art/road.avif 1266w" sizes="(max-width: 900px) 90vw, 760px"><img src="img/art/road.webp" srcset="img/art/road-800.webp 800w, img/art/road.webp 1266w" sizes="(max-width: 900px) 90vw, 760px" alt="" width="1266" height="706" loading="lazy" decoding="async"></picture></figure>
         <h2 class="ink-h">Raise your own kingdom</h2>
@@ -1023,7 +1046,8 @@ brew install whisper-cpp &amp;&amp; npm run voice-models   <span class="c"># the
 npm run build &amp;&amp; npm start                          <span class="c"># one port: http://localhost:4300</span>
 npm run install-service                            <span class="c"># keep it running as a launchd service</span></code></pre>
         </details>
-        <div class="pendant" data-reveal aria-hidden="true"><span class="seal-swing"><img class="seal-img" src="img/ui/seal.webp" alt="" width="360" height="526" loading="lazy" decoding="async"></span></div>
+      </div>
+        <div class="pendant" data-reveal aria-hidden="true"><img class="seal-img" src="img/ui/seal.webp" alt="" width="360" height="526" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -1109,14 +1133,6 @@ npm run install-service                            <span class="c"># keep it run
       window.addEventListener('resize', onScroll);
       update();
     }
-  }
-
-  // The knight sits a little deeper than his frame as the page scrolls (wide screens only).
-  var mini = d.querySelector('.miniature');
-  if (mini && !reduce && window.matchMedia('(min-width: 901px)').matches) {
-    var hq = false;
-    var hp = function () { hq = false; var y = window.scrollY; if (y < 900) mini.style.setProperty('--hp', Math.min(1, y / 700).toFixed(3)); };
-    window.addEventListener('scroll', function () { if (!hq) { hq = true; requestAnimationFrame(hp); } }, { passive: true });
   }
 
   // The flyover only plays while it is on screen, and never for readers who asked for less motion.
